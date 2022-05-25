@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>点击切换详情</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .box {
+        /* CSS3新盒子模型属性:控制WIDTH/HEIGHT,是盒子最终的宽高 */
+        box-sizing: border-box;
+        margin: 20px auto;
+        width: 200px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        border: 1px solid green;
+        position: relative;
+    }
+    .box .detail {
+        /* display: none; */
+        position: absolute;
+        right: -1px;
+        top: 38px;
+        box-sizing: border-box;
+        width: 500px;
+        height: 100px;
+        line-height: 100px;
+        text-align: center;
+        border: 1px solid green;
+        z-index: -1;
+    }
+</style>
+
+<body>
+    <div class="box" id="box">
+        <span>购物车</span>
+        <div class="detail" id="detail">
+            购物车相关信息
+        </div>
+    </div>
+    <script>
+        // document.getElementById([ID]):在整个文档中，通过元素的ID获取到当前这个元素对象
+        //元素对象.style. xxx=xXx: 修改元素的某-一个样式值(操作的是元素行内样式，所以如果我们没有把样式写在行内上，在JS中基于.style.xxx的方式是无法获取到样式的)
+        // 1.首先获取DETAIL原有的样式(显示还是隐藏) :元素. style. xxx就是获取某-一个样式 (前提:需要在元素行内设置这个样式才能获取到)
+
+        let box = document.getElementById('box');
+        let detail = document.getElementById('detail');
+        console.log(detail.style.display);
+        detail.style.display = 'none';
+        console.log(detail.style.display);
+        box.onclick = function () {
+            if (detail.style.display == 'none') {
+                detail.style.display = 'block';
+                box.style.borderBottomColor = '#fff';
+            } else {
+                detail.style.display = 'none';
+                box.style.borderBottomColor = 'green';
+            }
+            console.log(detail.style.display);
+        };
+    </script>
+</body>
+
+</html>

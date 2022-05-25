@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>案例练习</title>
+    <style>
+        #numInp,
+        #submit {
+            box-sizing: border-box;
+            border: 1px solid red;
+            padding: 0 15px;
+            height: 20px;
+            /* line-height: 20px;
+            text-align: center; */
+        }
+
+        #submit {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" id="numInp">
+    <button id="submit">点击计算</button>
+    <script>
+        let numInp = document.getElementById("numInp");
+        let submit = document.getElementById("submit");
+        
+        submit.onclick = function () {
+            let inpTxt = numInp.value;
+            console.log("inpTxt.length > 0  : "+inpTxt.length);
+            if (inpTxt.length > 0) {
+                if (typeof inpTxt === 'number' && isNaN(Number(inpTxt))) {
+                    console.log(inpTxt + " 是有效数字" + inpTxt);
+                } else {
+                    console.log(inpTxt + " 非有效数字" + inpTxt);
+                }
+            } else {
+                console.log("请输入内容");
+            }
+        };
+    </script>
+</body>
+
+</html>

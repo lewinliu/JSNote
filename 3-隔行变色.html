@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>隔行变色</title>
+    <link rel="stylesheet" href="css/init.css">
+    <style>
+        #newsBox {
+            box-sizing: border-box;
+            margin: 20px auto;
+            padding: 20px;
+            width: 300px;
+            border: 2px solid lightblue;
+        }
+
+        #newsBox li {
+            line-height: 50px;
+            border-bottom: 1px dashed lightcoral;
+        }
+
+        /* 获取LI中的倒数第一个 */
+        #newsBox li:nth-last-child(1) {
+
+            border-bottom: none;
+        }
+
+        /* 获取LI中的偶数行 */
+        /* #newsBox li:nth-child(even) {
+
+            background-color: blueviolet;
+        } */
+    </style>
+</head>
+
+<body>
+    <ul id="newsBox">
+        <li>我是第1个li</li>
+        <li>我是第2个li</li>
+        <li>我是第3个li</li>
+        <li>我是第4个li</li>
+        <li>我是第5个li</li>
+    </ul>
+    <script>
+        //[context].getElementsByTagName( [tagname]):在指定的context范围之内，通过标签名获取一组元素(元素集合 HTMLCollection)
+        let newsBox = document.getElementById('newsBox');
+        let newsList = newsBox.getElementsByTagName('li');
+        let colorArray = ['green', 'blue'];
+        for (let i = 0; i < newsList.length; i++) {
+            let curLi = newsList[i];
+            curLi.style.background = colorArray[i % 2];
+
+            curLi.onmouseover = function () {
+                if (this.style.background === colorArray[i % 2]) {
+                    this.style.background = colorArray[(i+1) % 2];
+                } 
+            }
+            curLi.onmouseout = function () {
+                if (this.style.background !== colorArray[i % 2]) {
+                    this.style.background = colorArray[i % 2];
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

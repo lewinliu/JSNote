@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>手风琴效果</title>
+
+    <link rel="stylesheet" href="css/init.css">
+
+    <style>
+        img {
+            height: 60px;
+        }
+
+        li {
+            float: left;
+            transition: 1s linear;
+            /* 鼠标样式：手指 */
+            cursor: pointer;
+        }
+
+        .list li {}
+
+        .options {
+            position: fixed;
+            bottom: 10%;
+            left: 35%;
+        }
+
+        .options li {
+            line-height: 50px;
+            text-align: center;
+        }
+
+        .options li a {
+            font-size: 36px;
+            color: black;
+            margin-right: 10px;
+            border: 1px solid black;
+            background-color: white;
+        }
+
+        img:target {
+            height: 400px;
+        }
+
+        img:target .options li a {
+            background-color: aqua;
+        }
+
+        /* .list li:hover img {
+            height: 400px;
+        } */
+        /*如果是点击实现显示，不需要基于JS也可以，可以基于:target实现手风琴效果*/
+    </style>
+</head>
+
+<body>
+
+    <ul class="list clearfix">
+        <li><img id="cxk0" src="./src/鸡你太美/cxk0.jpg" alt=""></li>
+        <li><img id="cxk1" src="./src/鸡你太美/cxk1.jpg" alt=""></li>
+        <li><img id="cxk2" src="./src/鸡你太美/cxk2.jpg" alt=""></li>
+        <li><img id="cxk3" src="./src/鸡你太美/cxk3.jpg" alt=""></li>
+        <li><img id="cxk4" src="./src/鸡你太美/cxk4.jpg" alt=""></li>
+        <li><img id="cxk5" src="./src/鸡你太美/cxk5.jpg" alt=""></li>
+        <li><img id="cxk6" src="./src/鸡你太美/cxk6.jpg" alt=""></li>
+    </ul>
+    <ul class="options clearfix">
+        <li><a href="#cxk0">0</a></li>
+        <li><a href="#cxk1">1</a></li>
+        <li><a href="#cxk2">2</a></li>
+        <li><a href="#cxk3">3</a></li>
+        <li><a href="#cxk4">4</a></li>
+        <li><a href="#cxk5">5</a></li>
+        <li><a href="#cxk6">6</a></li>
+    </ul>
+</body>
+
+</html>

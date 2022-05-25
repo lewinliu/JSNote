@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>鼠标划过详情页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            /* CSS3新盒子模型属性:控制WIDTH/HEIGHT是盒 子最终的宽高 */
+            box-sizing: border-box;
+            margin: 20px auto;
+            width: 200px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            border: 1px solid green;
+            position: relative;
+        }
+
+        .box .detail {
+            display: none;
+            position: absolute;
+            right: -1px;
+            top: 38px;
+            box-sizing: border-box;
+            width: 500px;
+            height: 100px;
+            line-height: 100px;
+            text-align: center;
+            border: 1px solid green;
+            z-index: -1;
+        }
+
+        .box:hover {
+            border-bottom-color: white;
+        }
+
+        .box:hover .detail {
+            display: block;
+        }
+
+        /* 
+        传统基于操作DOM的方式实现业务需求
+        1.想操作谁就先获取谁
+        2.给某元素绑定某事件
+        3.在事件触发的时候修改元素的样式等
+        */
+        
+    </style>
+</head>
+
+<body>
+    <!--基于CSS实现，我们需要让详情区域是按钮的子元素-->
+    <div class="box">
+        <span>购物车</span>
+        <div class="detail">
+            购物车相关信息
+        </div>
+    </div>
+</body>
+
+</html>
