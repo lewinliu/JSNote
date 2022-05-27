@@ -171,6 +171,75 @@ D. parseFloat(null) */
 // // x=[10, 2, 30]; y=[4, 20, 6];z=30;
 // console.Log(x, y, z);
 
+//将下面的判断改写成三元运算符
+// let a = 12;
+// if (a >= 0 && a <= 20) {
+//     if (a % 2 === 0) {
+//         a += 2;
+//     }
+// } else {
+//     a -= 2;
+// }
+// a >= 0 && a <= 20 ? (a % 2 === 0 ? a += 2 : null) : a -= 2;
+
+
+// //计算输出结果
+// let a = typeof typeof typeof [12, 23];
+// // typeof [12,23] ; -> typeof "object"
+// // typeof typeof typeof "object" -> "string"
+// console.log(a);// string
+
+// let a = '10';
+// a == 10 ? a++ : a--;
+// console.log(a);// a=11
+
+// let b = '10';
+// switch (b) {
+//     case 10:
+//         b++;
+//         break;
+//     default:
+//         b--;
+// }
+// console.log(b);// b=9
+
+
+// // 出道题(i++与++i):
+//     let i=3;
+//     console.log(5+(++i)+(i++)+3-2+(--i)+(i--)-2 );// 20
+//     console.log(i);// 3
+
+
+//扩展:“变态题”(锻炼数据类型基础知识)
+    console.log();
+// 题目一：只有 0、NaN、''、null、undefined 五个值转换为 FALSE， 其余都转换为 TRUE
+    ! (!"Number (undefined) ");// false
+// 题目二：
+    isNaN (parseInt(new Date())) + Number([1]) + typeof undefined;
+// 题目三：
+    Boolean(Number("")) + !isNaN (Number (nu11)) + Boolean("parseInt([] )") + typeof ! (nu11 );
+// 题目四：
+    parseFloat("1.6px") + parseInt("1.2px") + typeof parseInt(nu11);
+// 题目五：
+    isNaN (Number(! !Number(parseInt("0.8"))));
+// 题目六：
+    console. log(1 + "2" + "2");
+// 题目七：
+    !typeof parseF1oat("0");
+// 题目八：
+    Number("");
+// 题目九：
+    typeof "parseInt(nu11)"+ 12 + !!Number (NaN);
+// 题目十：
+    !typeof (isNaN("")) + parseInt (NaN) ;
+// 题目十一：
+    typeof ! parseInt(nu11) + ! isNaN(nu11);
+
+
+
+
+
+
 
 
 //

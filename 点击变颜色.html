@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>点击变颜色</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        #btn_change {
+            height: 50px;
+            line-height: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn_change">点击切换依次颜色（白红黄绿蓝黑）</button>
+
+    <script>
+
+        let body = document.body;
+        let btn_change = document.getElementById("btn_change");
+
+        let color_ary = ['white', 'red', 'yellow', 'green', 'blue', 'black'];
+        let i = 0;
+        body.style.backgroundColor = color_ary[i];
+
+        btn_change.onclick = function () {
+            i = (i < color_ary.length) ? ++i : 0;
+            body.style.backgroundColor = color_ary[i];
+        }
+    </script>
+</body>
+
+</html>
