@@ -45,20 +45,21 @@
         //[context].getElementsByTagName( [tagname]):在指定的context范围之内，通过标签名获取一组元素(元素集合 HTMLCollection)
         let newsBox = document.getElementById('newsBox');
         let newsList = newsBox.getElementsByTagName('li');
-        let colorArray = ['green', 'blue'];
+        let colorArray = ['green', 'blue','yellow'];
         for (let i = 0; i < newsList.length; i++) {
-            let curLi = newsList[i];
-            curLi.style.background = colorArray[i % 2];
 
-            curLi.onmouseover = function () {
-                if (this.style.background === colorArray[i % 2]) {
-                    this.style.background = colorArray[(i+1) % 2];
-                } 
+            newsList[i].style.background = colorArray[i % 2];
+            // 自定义属性，记录li原来的背景颜色
+            newsList[i].myOldColor = colorArray[i % 2];
+            // newsList[i].myNewColor = colorArray[(i + 1) % 2];
+
+            console.log(colorArray[i % 2]);
+
+            newsList[i].onmouseover = function () {
+                this.style.background = colorArray[2];
             }
-            curLi.onmouseout = function () {
-                if (this.style.background !== colorArray[i % 2]) {
-                    this.style.background = colorArray[i % 2];
-                }
+            newsList[i].onmouseout = function () {
+                this.style.background = newsList[i].myOldColor;
             }
         }
     </script>
