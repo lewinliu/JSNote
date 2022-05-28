@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>点击弹出索引</title>
+    <style>
+        button{
+            width: auto;
+            height: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <button value="按钮1"></button>
+    <button value="按钮2"></button>
+    <button value="按钮3"></button>
+    <button value="按钮4"></button>
+    <button value="按钮5"></button>
+
+    <script>
+        var btnList = document.getElementsByTagName('button');
+        for (let i = 0; i < btnList.length; i++) {
+            btnList[i].onclick = function () {
+                alert(btnList[i].value);
+                console.log(btnList[i].value);
+            }
+        }
+    </script>
+</body>
+
+</html>
