@@ -65,50 +65,48 @@
 ### JS 中的命名规范
 
 - 严格区分大小写
-
+  
   ```
   let Test=100;
   console. log(test);//=>无法输出，因为第一一个字母小写了
-
+  
   使用数字、字母、下划线、$，数字不能作为开头
       let $box; //=>一般用JQ获取的以$开头
       let .box; //=>一般公共变量都是_开头
       let 1box; //=>不可以，但是可以写box1
   ```
-
 - 使用驼峰命名法:首字母小写，其余每-一个有意义单词的首字母都要大写(命名尽可能语义化明显，使用英文单词)
-
+  
   ```
   let student Information;
   let studentInfo;
   //常用的缩写: add/ insert/ create/new (新增)、update ( 修改)
   、delete/del/ remove/rm (删除)、sel/ select/query/get (查
   询)、info(信息)
-
+  
   //不正确的写法
   let xueshengInfo;
   let xueshengxinxi;
   let xsxx;
   ```
-
 - 不能使用关键字和保留字
-
+  
   ```
   当下有特殊含义的是关键字，未来可能会成为关键字的叫做保留字(? )
-
+  
   var let const function
-
+  
   var var10 = 10; //=>肯定不行的
-
+  
   //=>代码强迫症(代码洁癖) :良 好的编程习惯、极客精神
   ```
 
-### JS 中常用的数据类型.
+### JS 中常用的数据类型
 
 > 在 JavaScript 中，共有七种基本数据类型：string、number、bigint、boolean、null、undefined、symbol。
 
 - 基本数据类型
-
+  
   - 数字 number
     - 常规数字和 NaN
   - 字符串 string
@@ -120,19 +118,19 @@
   - 长整型数字 bigint
   - 唯一值 Symbol
     - ES6 标准种新增的 symbol 的值是通过 Symbol() 函数生成，每一个 symbol 的值都是唯一的，并且 symbol 类型的值可以作为对象的属性标识符使用
-
 - 引用数据类型
-  + 对象数据类型 object
+  
+  - 对象数据类型 object
     - {}普通对象
     - []数组对象
     - /^[+-]?(\d|([1-9]\d+))(\. \d+)?$/正则对象
     - 日期对象
     - ...
-  + 函数数据类型 function
+  - 函数数据类型 function
     - function
--
+- 
 
-## number 数字类型.
+## number 数字类型
 
 > 包含:常规数字、NaN
 
@@ -153,7 +151,7 @@
 > 把字符串转换为数字，只要字符串中包含任意-一个非有效数字字符(第一个点除外)结果都是 NaN,空字符串会变为数字零
 
 ```
-    console.log(Number('123.4')); //123.4
+console.log(Number('123.4')); //123.4
     console.log(Number('123.4px')); // NaN
     console.log(Number('123.4.5')); // NaN
     console.log(Number('')); //0
@@ -236,13 +234,13 @@ num = 12;
 > 基本数据类型和引用数据类型，堆栈理解
 
 - 题目一：（数据堆栈内存 1.PNG）
-
+  
   ```
   let a = 12;
   let b = a;
   b = 13;
   console.log(a);
-
+  
   let c = {
       name: '小明'
   };
@@ -250,9 +248,8 @@ num = 12;
   d.name = '大明';
   console.log(c.name);
   ```
-
 - 题目二：（数据堆栈内存 2.PNG）
-
+  
   ```
   let n = [10, 20];
   let m = n;
@@ -265,9 +262,8 @@ num = 12;
   n[2] = 400;
   console.log(n, m, x);
   ```
-
 - 题目三：（数据堆栈内存 3.PNG）
-
+  
   ```
   let a = {
       n: 1
@@ -279,8 +275,8 @@ num = 12;
   console.logog(a.x);
   console.log(b);
   ```
-
 - 题目四：（数据堆栈内存 4.PNG）
+  
   ```
   let a = {
       n: 1
@@ -292,175 +288,536 @@ num = 12;
 ### JS 中的数据类型检测
 
 - typeof [val]：用来检测数据类型的运算符
-    ```
-    typeof返回结果:
-        1.首先是一个字符串.
-        2.字符串中包含对应的类型
-    typeof局限性
-        1. typeof null => "object" 但 是nu1l并不是对象
-        2.基于typeof无法细分出当前值是普通对象还是数组对象等，因为只要是对象数据类型，返回的结果都是"object"
-
-    typeof '12 ' //=> string
-    typeof true //=> boolean
-    typeof null //=> object
-    typeof undefined //=> undefined
-    typeof 1 //=> number
-    typeof NaN //=> number
-    typeof {} //=> 'object'
-    typeof [] //=> 'object'
-    typeof /^/ //=> 'object'
-    ```
-
+  
+  ```
+  typeof返回结果:
+      1.首先是一个字符串.
+      2.字符串中包含对应的类型
+  typeof局限性
+      1. typeof null => "object" 但 是nu1l并不是对象
+      2.基于typeof无法细分出当前值是普通对象还是数组对象等，因为只要是对象数据类型，返回的结果都是"object"
+  
+  typeof '12 ' //=> string
+  typeof true //=> boolean
+  typeof null //=> object
+  typeof undefined //=> undefined
+  typeof 1 //=> number
+  typeof NaN //=> number
+  typeof {} //=> 'object'
+  typeof [] //=> 'object'
+  typeof /^/ //=> 'object'
+  ```
 - instanceof：用来检测当前实例是否率属于某个类
-    ```
-
-    ```
+  
+  ```
+  
+  ```
 - constructor：基于构造函数检测数据类型( 也是基于类的方式)
-    ```
-
-    ```
+  
+  ```
+  
+  ```
 - object . prototype. toString.call()：检测数据类型最好的办法
-    ```
-
-    ```
+  
+  ```
+  
+  ```
 
 ### JS中的数学运算
+
 > i++和以上两种不完全一样， 他是纯粹的数学运算
+
 ```
-    let i='10';
+let i='10';
         i=i+1 => '10'+1 => '101 '
     i+=1 => '101 '
     i++ => i=11
 ```
 
 > i+t和++i都会是数学运算中的累加1，区别是计算的顺序
+
 ```
-    let i=1;
+let i=1;
     // 哪怕是有括号，也是先算5+i=6，再i+1，i=2；
     5+(i++)// 结果为5+1，然后i++;
 
     i=1;
     5+(++i)// =>先i累加1，然后拿累加后的结果去和5运算 =>7
+```
 
 ```
-```
-    出道题:
+出道题:
     let i=3;
     console.log(5+(++i)+(i++)+3-2+(--i)+(i--)-2 );// 20
     console.log(i);// 3
-
 ```
-
-
 
 ## JS中的操作语句:判断、循环
 
 #### 判断
->条件成立做什么?不成立做什么?
+
+> 条件成立做什么?不成立做什么?
+
 - if/else if/else
 - 三元运算符
-    + (条件)?(值1):(值2)
+  
+  - (条件)?(值1):(值2)
 - switch case
-    ```
-    1.每一种CASE情况结束后最好都加上BREAK
-    2. default等价于else，以上都不成立干的事情
-    3.每一种case情况的比较用的都是三个等号，===，叫“绝对相等” 
-    ```
+  
+  ```
+  1.每一种CASE情况结束后最好都加上BREAK
+  2. default等价于else，以上都不成立干的事情
+  3.每一种case情况的比较用的都是三个等号，===，叫“绝对相等”
+  ```
 - == VS ===（两等号与三等号）
-    ```
-    ==:相等(如果左右两边数据值类型不同，是默认先转换为相同的类型，然后比较)
-    '5'==5 =>TRUE
-
-    ===:绝对相等(如果类型不一样，肯定不相等)
-    '5'===5 =>FALSE
-
-    项目中为了保证业务的严谨，推荐使用===
-    ```
+  
+  ```
+  ==:相等(如果左右两边数据值类型不同，是默认先转换为相同的类型，然后比较)
+  '5'==5 =>TRUE
+  
+  ===:绝对相等(如果类型不一样，肯定不相等)
+  '5'===5 =>FALSE
+  
+  项目中为了保证业务的严谨，推荐使用===
+  ```
 
 #### 循环
+
 > 重复做某些事情就是循环.
+
 - for循环
 - for in循环
-    + 用来循环遍历对象中的键值对的
-    + for in在遍历的时候，优先循环数字属性名(从小到大)
+  - 用来循环遍历对象中的键值对的
+  - for in在遍历的时候，优先循环数字属性名(从小到大)
 - for of循环( ES6新增)
 - while循环
 - do while循环
 
 ### 函数function
->函数就是一个方法或者一个功能体，函数就是把实现某个功能的代码放到- -起进行分装，以后想要操作实现这个功能，只需要把函数执行即可=>“封装”: 减少页面中的冗余代码，提高代码重复使用率(低耦合高内聚)
-    洗衣机就是-一个函数，生产洗衣机就是封装- -个函数(把实现某些功能的代码封装进来)，生产的时候，不知道用户洗衣服的时候放什么水、衣服、洗衣液，我们需要提供出入口(提供的入口在函数中叫做形参，执行的时候放的具体东西函数中叫做实
-    参)，洗完衣服需要能拿出来，洗衣机提供-一个出口( 在函数中叫做返回值:把函数
-    处理后的结果能够返回给外面用)
+
+> 函数就是一个方法或者一个功能体，函数就是把实现某个功能的代码放到- -起进行分装，以后想要操作实现这个功能，只需要把函数执行即可=>“封装”: 减少页面中的冗余代码，提高代码重复使用率(低耦合高内聚)
+> 洗衣机就是-一个函数，生产洗衣机就是封装- -个函数(把实现某些功能的代码封装进来)，生产的时候，不知道用户洗衣服的时候放什么水、衣服、洗衣液，我们需要提供出入口(提供的入口在函数中叫做形参，执行的时候放的具体东西函数中叫做实
+> 参)，洗完衣服需要能拿出来，洗衣机提供-一个出口( 在函数中叫做返回值:把函数
+> 处理后的结果能够返回给外面用)
 
 - 创建函数
-    + 形参
-    + 返回值
+  - 形参
+  - 返回值
 - 执行函数
-    + 实参
+  - 实参
 - arguments
 - 函数底层运行机制
 - 。。。
 
 #### 创建函数
->创建函数的时候我们设置了形参变量，但如果执行的时候并没有给传递对应的实参值，那么形参变量默认的值是: undefined
 
->函数没有写RETURN，函数默认返回值是undefined
+> 创建函数的时候我们设置了形参变量，但如果执行的时候并没有给传递对应的实参值，那么形参变量默认的值是: undefined
+
+> 函数没有写RETURN，函数默认返回值是undefined
 
 ### 执行函数
->匿名函数
-    匿名函数之函数表达式:把-一个匿名函数本身作为值赋值给其它东西，这种函数一般不是手动触发执行，而且靠其它程序驱动触发执行(例如:触发某个事件的时候把它执行等)
 
-    ```
-    document.body.onclick = function () { }
-    setTimeout( function(){}, 1000); //=>设置定时器，1000MS后执行匿名函数
-    ```
-    
->匿名函数之自执行函数:创建完-一个匿名函数，紧接着就把当前函数加小括号执行
+> 匿名函数
+> 匿名函数之函数表达式:把-一个匿名函数本身作为值赋值给其它东西，这种函数一般不是手动触发执行，而且靠其它程序驱动触发执行(例如:触发某个事件的时候把它执行等)
 
-    ```
-    (function(n){
-        n=>100
-    })(100);
-    ```
+    ``   document.body.onclick = function () { }     setTimeout( function(){}, 1000); //=>设置定时器，1000MS后执行匿名函数   ``
+
+> 匿名函数之自执行函数:创建完-一个匿名函数，紧接着就把当前函数加小括号执行
+
+    ``   (function(n){         n=>100     })(100);   ``
+
 ### 浏览器常用的输出方式
-- 1.在控制台输出：console.log/dir/table.. .
-    + console.log():    
-    + console.dir():
-        ```
-        输出一个对象的详细键值对信息
-        ```
-    + console.table():
-        ```
-        把一个多维JSON数组在控制台按照表格的方式呈现出来
-        ```
-- 2.浏览器窗口弹窗：alert/confirm/ prompt
 
-    + alert(1);
-        ```
-        弹出提示窗口，显示1；
-        ```
-    + confirm( '确定要干啥吗? ' );
-        ```
-            确定和取消:选择型弹框
-        ```
-    + prompt('确定要干啥吗?写出原因! ');
-        ```
-            在CONFIRM的基础.上多了-一个输入框
-        ```
-        ```
-        =>三种方式输出的结果都必先经过toString转换为字符串
-        =>三种方式 会阻断JS代码的执行，只有当窗口关掉，JS才会继续运行
-            for(leti=0;i<5;i++){
-                alert(i);
-                console.log('哈哈');
-            }
-        ```
+- 1.在控制台输出：console.log/dir/table.. .
+  
+  - console.log():
+  - console.dir():
+    
+    ``输出一个对象的详细键值对信息``
+  - console.table():
+    
+    ``把一个多维JSON数组在控制台按照表格的方式呈现出来``
+- 2.浏览器窗口弹窗：alert/confirm/ prompt
+  
+  - alert(1);
+    
+    ``弹出提示窗口，显示1；``
+  - confirm( '确定要干啥吗? ' );
+    
+    ``确定和取消:选择型弹框``
+  - prompt('确定要干啥吗?写出原因! ');
+    
+    ``在CONFIRM的基础.上多了-一个输入框``
+    
+    ``=>三种方式输出的结果都必先经过toString转换为字符串 =>三种方式 会阻断JS代码的执行，只有当窗口关掉，JS才会继续运行 for(leti=0;i<5;i++){ alert(i); console.log('哈哈'); }``
 - 3.在页面中写入信息
-    + document.write
+  
+  - document.write
+    
     ```
     =>和alert一样，输出的结果都是字符串
     ```
 
+## 函数
+
+### arguments函数内置的实参集合
+
+### 任意数求和(执行函数的时候,传递N个值实现求和)
+
+```
+/*
+    任意数求和:
+        1.传递实参的个数不定
+        2.传递的值是否为有效数字不定
+        =>把传递的有效数字进行相加求和
+
+    arguments:函数内置的实参集合
+        1.类数组集合，集合中存储着所有函数执行时，传递的实参信息
+        2.不论是否设置形参，arguments 都存在
+        3.不论是否传递实参，arguments 也都存在
+
+    arguments.callee:存储的是当前函数本身(一般不用的，JS严格模式下禁止使用这些属性)
+
+    */
+    function sum() {
+        let total = null;
+        for (let i = 0; i < arguments.length; i++) {
+            let item = Number(arguments[i]);
+            if (isNaN(item)) {
+                continue;
+            }
+            total += item;
+        }
+        return total;
+    }
+
+    let total = sum(10, 20, 30, 40);
+    console.log(total);
+
+    total = sum(10, 20);
+    console.log(total);
+
+    total = sum(10, 20, '30');
+    console.log(total);
+
+    total = sum(20, '30', 'AA');
+    console.log(total);
+
+    total = sum();
+    console.log(total);
+```
+
+#### arrow function箭头函数
+
+```
+//求和
+    function sum(n, m) {
+        return n + m;
+    }
+    //改写成箭头函数
+    let sum = (n, m) => {
+        return n + m;
+    };
+
+    //如果函数体中只有一行RETURN，可以省略RETURN和大括号，- -行搞定
+    let sum = (n, m) => n + m;
+
+    console.log(sum(10, 20));
+```
+
+```
+function fn(n) {
+        return function (m) {
+            return n + m;
+        }
+    }
+    // 精简
+    let fn = n => m => n + m;
+```
+
+```
+function sum(n, m) {
+
+    if (typeof n === 'undefined') {
+
+        n = 0;
+
+    }
+
+    if (typeof m === 'undefined') {
+
+        m = 0;
+
+    }
+
+    return n + m;
+
+}
+
+
+//形参赋值默认值:当没有给形参传递实参的时候，执行默认值
+
+let sum = (n = 0, m = 0) => n + m;
+sum();
+sum(10);
+```
+
+![1653796636781.png](image/JavaScript笔记/1653796636781.png)
+
+> 箭头函数中没有ARGUMENTS
+
+```
+letsum=()=>{
+console.1og( arguments); 
+
+    //=>Uncaught ReferenceError: arguments is not defined 箭头函数中没有ARGUMENTS
+
+}; 
+
+
+//但是我们可以使用剩余运算符获取到传递的实参集合(它是数组，比arguments更好玩)
+let sum = (...arg) => {
+
+    console.log(eval(arg.join('+')));
+
+}; 
+
+// join：返回用'+'号连接的字符串
+
+// eval：评估JavaScript代码并执行它。
+
+letsum= (...arg) =>eval(arg.join('+'));
+
+sum(1, 2, 3, 4);
+```
+
+> 箭头函数中的THIS某些场景也是方便我们操作的
+
+## Math
+
+> 数学函数:但是它不是-一个函数,它是一个对象,对象中存储了很多操作数字的属性方法,因此被称为数学函数
+
+```
+Math = {
+
+    E: 2.718281828459045
+
+    LN2: 0.6931471805599453
+
+    LN10: 2.302585092994046
+
+    LOG2E: 1.4426950408889634
+
+    LOG10E: 0.4342944819032518
+
+    PI: 3.141592653589793
+
+    SQRT1_2: 0.7071067811865476
+
+    SQRT2: 1.4142135623730951
+
+    abs: ƒ abs()
+
+    acos: ƒ acos()
+
+    acosh: ƒ acosh()
+
+    asin: ƒ asin()
+
+    asinh: ƒ asinh()
+
+    atan: ƒ atan()
+
+    atan2: ƒ atan2()
+
+    atanh: ƒ atanh()
+
+    cbrt: ƒ cbrt()
+
+    ceil: ƒ ceil()
+
+    clz32: ƒ clz32()
+
+    cos: ƒ cos()
+
+    cosh: ƒ cosh()
+
+    exp: ƒ exp()
+
+    expm1: ƒ expm1()
+
+    floor: ƒ floor()
+
+    fround: ƒ fround()
+
+    hypot: ƒ hypot()
+
+    imul: ƒ imul()
+
+    log: ƒ log()
+
+    log1p: ƒ log1p()
+
+    log2: ƒ log2()
+
+    log10: ƒ log10()
+
+    max: ƒ max()
+
+    min: ƒ min()
+
+    pow: ƒ pow()
+
+    random: ƒ random()
+
+    round: ƒ round()
+
+    sign: ƒ sign()
+
+    sin: ƒ sin()
+
+    sinh: ƒ sinh()
+
+    sqrt: ƒ sqrt()
+
+    tan: ƒ tan()
+
+    tanh: ƒ tanh()
+
+    trunc: ƒ trunc()
+
+    Symbol(Symbol.toStringTag): "Math"
+
+    [[Prototype]]: Object
+
+}
+Math.abs();
+
+// https://developer.mozilla.org/zh-CN/search?q=
+```
+
+### Math中常用的属性和方法
+
+> 1. Math.abs([number value]);	//获取绝对值(绝对值永远是正数或者零)
+
+```
+console.log(Math.abs(-12.5)); //=>12.5
+
+console.log(Math.abs(12)); //=>12
+
+console.log(Math.abs(0)); //=>0
+
+//传递的不是数字类型的值:先基于Number()转换为数字再处理
+
+console.log(Math.abs('-1')); //=>1
+
+console.log(Math.abs('-1px')); //=>NaN
+
+console.log(Math.abs(true)); //=>1| I
+```
+
+> 2. Math.ceil / floor([number value]); 把一个数向.上取整/向下取整
+
+```
+console.log(Math.cei1(12)); //=>12
+
+console.log(Math.cei1(12.1)); //=>13
+
+console.log(Math.cei1(12.9)); //=>13
+
+console.log(Math.cei1(-12.1)); //=>-12
+
+console.log(Math.cei1(-12.9)); //=>-12
+
+console.log(Math.floor(12)); //=>12
+
+console.log(Math.floor(12.1)); //=>12
+
+console.log(Math.f1oor(12.9)); //=>12
+
+console.log(Math.f1oor(-12.1)); //=>-13
+
+console.log(Math.f1oor(-12.9)); //=>-13
+```
+
+> 3. Math.round();    四舍五入
+
+```
+console.log(Math.round(12)); //=>12
+
+console.log(Math.round(12.1)); //=>12
+
+console.log(Math.round(12.5)); //=>13 正数中. 5属于入
+
+console.log(Math.round(12.9)); //=>13
+
+console.log(Math.round(-12.1)); //=>-12
+
+console.log(Math.round(-12.5)); //=>-12负数中. 5属于舍
+
+console.log(Math.round(-12.9)); //=>-13
+```
+
+> 4. Math.max | min(va1[val1],[val2],...);    获取一堆数中的最大值和最小值
+
+```
+console.log(Math.max(12, 5, 68, 23, 45, 3, 27)); //=>68
+
+console.log(Math.min(12, 5, 68, 23, 45, 3, 27)); //=>3
+
+// 思考题:如何基于Math.max/min获取数组中的最大值最小值?
+
+Math.max([12, 5, 68, 23, 45, 3, 27]); //=>NaN   此处是只传第一个值，是个数组，和内置的语法要求不符
+```
+
+> 5. Math.sqrt/pow();	// sqrt:给一个数开平方;	 pow :计算一个数的多少次幂
+
+```
+console.log(Math.sqrt(9)); //=>3符 合N*N=M这样的M才能整开平方
+
+console.log(Math.sqrt(-9)); //=>NaN 负数开不了平方
+
+console.log(Math.pow(2, 10)); //=>1024
+```
+
+> 6. Math.random();	// 获取0~1之间的随机小数
+
+```
+// 获取[n~m]之间的随机整数
+function random(min, max) {
+
+    return Math.round(Math.random() * (max - min) + min);
+
+}
+
+let ran= (min, max) => Math.round(Math.random() * (max-min) +min);
+
+
+for (leti=0; i<100; i++) {
+
+    console.log(i+':'+ran(1, 5));
+
+}
+```
+
+### 数组
+
+
+
+---
+
+---
+
+---
+
+
+
+---
+
+# a
+
+## a
+
+### a
 
 
