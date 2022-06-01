@@ -143,12 +143,12 @@ if(ary.includes('靓仔')){
     对数组中的元素进行反向操作。(把数组倒过来)
     这个方法改变数组并返回对同一个数组的引用。
 */
-ary = [12, 15, 9, 28, 10, 22];
-ary.reverse();
-console.log(ary); //=>[22,10,8,9,15,12]
+// ary = [12, 15, 9, 28, 10, 22];
+// ary.reverse();
+// console.log(ary); //=>[22,10,8,9,15,12]
 
 
-// SORT方法中如果不传递参数,是无法处理10以上数字排序的(它默认按照每一项第一个字符来排,不是我们想要的效果)
+/* // SORT方法中如果不传递参数,是无法处理10以上数字排序的(它默认按照每一项第一个字符来排,不是我们想要的效果)
     ary = [12, 15, 9, 28, 10, 22];
     ary.sort();
 console.log(ary); //=> [10, 12, 15,22, 28,9]
@@ -158,4 +158,165 @@ console.log(ary); //=> [10, 12, 15,22, 28,9]
 // ary.sort(function(a,b){ return a-b; });
 // a和b是相邻的两项
     ary.sort((a, b) => a - b);
-    console.log(ary);
+    console.log(ary); */
+
+
+
+/* // 遍历数组中每一项的方法
+forEach
+map
+filter
+find
+reduce
+some
+every
+.. .
+ */
+/* //forEach()
+ary.forEach((item, index) => {
+    // 数组中有多少项,函数就会被默认执行多少次
+    // 每一次执行函数: item是数组中当前要操作的这一项, index是当前项的索引
+    console.log('索引: ' + index + '内容:' + item);
+}) */
+
+
+//数组去重
+// ary = [1, 2, 3, 1, 2, 1, 2, 3, 2, 1, 2, 3];
+// console.log(ary);
+
+/* //方法一：includes不兼容
+let newAry = [];
+for (let i = 0; i < ary.length; i++) {
+    //是否包含
+    if (newAry.includes(ary[i])) {
+        continue;
+    }
+    //末尾添加
+    newAry.push(ary[i]);
+
+}
+console.log(newAry);
+ary = newAry; */
+
+/* // 方法二：includes不兼容
+let newAry = [];
+ary.forEach(item => {
+    if (newAry.includes(item)) return;
+    newAry.push(item);
+});
+console.log(newAry);
+ary = newAry; */
+
+/* // 方法三：兼容版,性能不好
+ary = [1, 3, 1, 2, 1, 2, 3, 2, 1, 2, 3,2, 3, 1, 2, 1, 2, 3, 2, 1, 2, 3];
+console.log(ary);
+for (let i = 0; i < ary.length; i++) {
+    let item = ary[i];
+    console.log('-i:' + i + ", item:" + item);
+    for (let j = i + 1; j < ary.length; j++) {
+        console.log('+++j:' + j + ", ary[j]:" + ary[j]);
+        if (item === ary[j]) {
+            console.log('delete:' + ary[j]);
+            // 删除以后,数组索引提前一位
+            ary.splice(j, 1);
+            // 调整索引位置
+            j--;
+        }
+    }
+    console.log("****ary:" + ary);
+}
+console.log(ary); */
+
+
+/* //  方法四：性能比较优&兼容版
+ary = [1, 3, 1, 2, 1, 2, 3, 2, 1, 2, 3,2, 3, 1, 2, 1, 2, 3, 2, 1, 2, 3];
+console.log(ary);
+// 1.创建一个空对象
+let obj = {};
+// 2. 循环数组中的每一项,把每一项向对象中进行存储=> item: item
+for (let i = 0; i < ary.length; i++) {
+    let item = ary[i];
+    // 3.每一次存储之前进行判断:验证obj中是否存在这一项
+    if (obj[item] !== undefined) {
+        //已经存在这一项
+        ary.splice(i, 1);
+        i--;
+        continue;
+    }
+    // 键名和值相同
+    obj[item] = item;
+}
+console.log(ary);
+ */
+
+// 基于splice实现删除性能不好:当前项被删后,后面每一项的索引都要向前提一位,如果后面内容过多,一定影响性能
+/* // 方法五：性能优&兼容版
+ary = [1, 3, 1, 2, 1, 2, 3, 2, 1, 2, 3, 2, 3, 1, 2, 1, 2, 3, 2, 1, 2, 3];
+console.log(ary);
+// 1.创建一个空对象
+let obj = {};
+// 2.循环数组中的每一项,把每一项向对象中进行存储=> item: item
+for (let i = 0; i < ary.length; i++) {
+    let item = ary[i];
+    // 3.每一次存储之前进行判断:验证obj中是否存在这一项
+    if (obj[item] !== undefined) {
+        // splice删除引起数组塌陷
+        // ary.splice(i, 1);
+        // 将数组最后一项的值提到当前索引位置
+        ary[i] = ary[ary.length - 1];
+        // 删除最后一项,不会引起数组塌陷
+        ary.length--;
+        i--;
+        continue;
+    }
+    // 键名和值相同
+    obj[item] = item;
+}
+console.log(ary);
+ */
+
+/* //封装去重方法
+function unique(ary) {
+    let obj = {};
+    for (let i = 0; i < ary.length; i++) {
+        let item = ary[i];
+        if (obj[item] !== undefined) {
+            ary[i] = ary[ary.length - 1];
+            ary.length--;
+            i--;
+            continue;
+        }
+        obj[item] = item;
+    }
+    return ary;
+}
+
+ary = [1, 3, 1, 2, 1, 2, 3, 2, 1, 32, 3, 12, 3, 1, 2, 1, 2, 3, 2, 1, 52, 3];
+console.log(unique(ary));
+ */
+
+// // 方法六：正则去重
+// ary = [12, 23, 12, 15, 25, 23, 25, 14, 16];
+// // 升序排序
+// ary.sort((a, b) => a - b);
+// // 将数组转换成字符串，用‘@’符连接
+// let str = ary.join('@') + '@';
+// // \d 数字， \d+ 1到多个数字，  (\d+@)多个数字后面有@
+// // \1+ 出现1到多位跟前面一样的内容
+// // \1* 出现0到多位跟前面一样的内容
+// // g 全局匹配
+// let reg = /(\d+@)\1*/g;
+
+// ary = [];
+// str.replace(reg, (n, m) => {
+//     m = Number(m.slice(0, m.length - 1));
+//     ary.push(m);
+// });
+// console.log(ary);
+
+
+
+//基于ES6的Set (对应的Map)实现去重
+ary = [1, 3, 1, 2, 1, 2, 3, 2, 1, 32, 3, 12, 3, 1, 2, 1, 2, 3, 2, 1, 52, 3];
+ary = [...new Set(ary)];
+console. log(ary) ;

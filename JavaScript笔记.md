@@ -824,7 +824,7 @@ for (leti=0; i<100; i++) {
 
 > console.dir([]);
 
-### 数组中常用的方法
+#### 数组中常用的方法
 
 - 方法的作用和含义
 - 方法的实参(类型和含义)
@@ -869,7 +869,7 @@ for (leti=0; i<100; i++) {
   ```
   从数组中删除元素，并在必要时在其位置插入新元素，返回已删除的元素。
   @param 
-  	start从数组中从零开始删除元素的位置。
+  	start从数组中从?开始删除元素的位置。
   @param 
   	deleteCount要删除的元素个数。
   @param 
@@ -996,9 +996,318 @@ for (leti=0; i<100; i++) {
   ```
 - 
 
+#### 6.遍历数组中每一项的方法
+
+- forEach
+
+  ```
+  ary.forEach((item, index) => {
+      // 数组中有多少项，函数就会被默认执行多少次
+      // 每一次执行函数: item是数组中当前要操作的这一项， index是当前项的索引
+      console.log('索引: ' + index + '内容:' + item);
+  })
+  ```
+- map
+- filter
+- find
+- reduce
+- some
+- every
+- ...
+
+#### 7. Array.prototype
+
+- 在控制台查看数组中所有提供的方法,可以基于MDN网站去查询方法的用法
+
+---
+
+#### 8.数组去重的几种方法
+
+```
+
+//数组去重
+// ary = [1, 2, 3, 1, 2, 1, 2, 3, 2, 1, 2, 3];
+// console.log(ary);
+
+/* //方法一：includes不兼容
+let newAry = [];
+for (let i = 0; i < ary.length; i++) {
+    //是否包含
+    if (newAry.includes(ary[i])) {
+        continue;
+    }
+    //末尾添加
+    newAry.push(ary[i]);
+
+}
+console.log(newAry);
+ary = newAry; */
+
+/* // 方法二：includes不兼容
+let newAry = [];
+ary.forEach(item => {
+    if (newAry.includes(item)) return;
+    newAry.push(item);
+});
+console.log(newAry);
+ary = newAry; */
+
+/* // 方法三：兼容版,性能不好
+ary = [1, 3, 1, 2, 1, 2, 3, 2, 1, 2, 3,2, 3, 1, 2, 1, 2, 3, 2, 1, 2, 3];
+console.log(ary);
+for (let i = 0; i < ary.length; i++) {
+    let item = ary[i];
+    console.log('-i:' + i + ", item:" + item);
+    for (let j = i + 1; j < ary.length; j++) {
+        console.log('+++j:' + j + ", ary[j]:" + ary[j]);
+        if (item === ary[j]) {
+            console.log('delete:' + ary[j]);
+            // 删除以后,数组索引提前一位
+            ary.splice(j, 1);
+            // 调整索引位置
+            j--;
+        }
+    }
+    console.log("****ary:" + ary);
+}
+console.log(ary); */
+
+
+/* //  方法四：性能比较优&兼容版
+ary = [1, 3, 1, 2, 1, 2, 3, 2, 1, 2, 3,2, 3, 1, 2, 1, 2, 3, 2, 1, 2, 3];
+console.log(ary);
+// 1.创建一个空对象
+let obj = {};
+// 2. 循环数组中的每一项,把每一项向对象中进行存储=> item: item
+for (let i = 0; i < ary.length; i++) {
+    let item = ary[i];
+    // 3.每一次存储之前进行判断:验证obj中是否存在这一项
+    if (obj[item] !== undefined) {
+        //已经存在这一项
+        ary.splice(i, 1);
+        i--;
+        continue;
+    }
+    // 键名和值相同
+    obj[item] = item;
+}
+console.log(ary);
+ */
+
+// 基于splice实现删除性能不好:当前项被删后,后面每一项的索引都要向前提一位,如果后面内容过多,一定影响性能
+/* // 方法五：性能优&兼容版
+ary = [1, 3, 1, 2, 1, 2, 3, 2, 1, 2, 3, 2, 3, 1, 2, 1, 2, 3, 2, 1, 2, 3];
+console.log(ary);
+// 1.创建一个空对象
+let obj = {};
+// 2.循环数组中的每一项,把每一项向对象中进行存储=> item: item
+for (let i = 0; i < ary.length; i++) {
+    let item = ary[i];
+    // 3.每一次存储之前进行判断:验证obj中是否存在这一项
+    if (obj[item] !== undefined) {
+        // splice删除引起数组塌陷
+        // ary.splice(i, 1);
+        // 将数组最后一项的值提到当前索引位置
+        ary[i] = ary[ary.length - 1];
+        // 删除最后一项,不会引起数组塌陷
+        ary.length--;
+        i--;
+        continue;
+    }
+    // 键名和值相同
+    obj[item] = item;
+}
+console.log(ary);
+ */
+
+/* //封装去重方法
+function unique(ary) {
+    let obj = {};
+    for (let i = 0; i < ary.length; i++) {
+        let item = ary[i];
+        if (obj[item] !== undefined) {
+            ary[i] = ary[ary.length - 1];
+            ary.length--;
+            i--;
+            continue;
+        }
+        obj[item] = item;
+    }
+    return ary;
+}
+
+ary = [1, 3, 1, 2, 1, 2, 3, 2, 1, 32, 3, 12, 3, 1, 2, 1, 2, 3, 2, 1, 52, 3];
+console.log(unique(ary));
+ */
+
+// // 方法六：正则去重
+// ary = [12, 23, 12, 15, 25, 23, 25, 14, 16];
+// // 升序排序
+// ary.sort((a, b) => a - b);
+// // 将数组转换成字符串，用‘@’符连接
+// let str = ary.join('@') + '@';
+// // \d 数字， \d+ 1到多个数字，  (\d+@)多个数字后面有@
+// // \1+ 出现1到多位跟前面一样的内容
+// // \1* 出现0到多位跟前面一样的内容
+// // g 全局匹配
+// let reg = /(\d+@)\1*/g;
+
+// ary = [];
+// str.replace(reg, (n, m) => {
+//     m = Number(m.slice(0, m.length - 1));
+//     ary.push(m);
+// });
+// console.log(ary);
+
+
+
+//基于ES6的Set (对应的Map)实现去重
+ary = [1, 3, 1, 2, 1, 2, 3, 2, 1, 32, 3, 12, 3, 1, 2, 1, 2, 3, 2, 1, 52, 3];
+ary = [...new Set(ary)];
+console. log(ary) ;
+
+```
+
+---
+
+## 字符串中的常用方法
+
+### 1.charAt/charCodeAt
+
+```
+/* 
+charAt: 根据索引获取指定位置的字符
+charCodeAt: 获取指定字符的ASCII码值(Unicode编码值)
+@params
+    n [number] 获取字符指定的索引
+@return 
+    返回查找到的字符
+    找不到返回的是空字符串不是undefined，或者对应编码值
+*/
+let str = ' zhufengpeixunyangfanqihang';
+console.log(str.charAt(0)); //=>'z'
+console.log(str[0]); //=>'z '
+console.log(str.charAt(10000)); //=>''
+console.log(str[10000]); //=>undefined
+
+console.log(str.charCodeAt(0)); //=>122
+console.log(String.fromCharCode(122)); //=>'z'
+```
+
+### 2.字符串的截取
+
+```
+/* 
+都是为了实现字符串的截取(在原来字符串中查找到自己想要的)
+    substr(n,m):从索引n开始截取m个字符，m不写截取到末尾(后面方法也是)
+    substring(n,m):从索引n开始找到索引为m处(不含m)
+    slice(n,m):和substring一样，都是找到索引为m处，但是slice可以支持负数作为索引，其余两个方法是不可以的
+*/
+let str = 'zhufengpeixunyangfanqihang';
+console.log(str.substr(3, 7)); //=>' fengpei'
+console.log(str.substring(3, 7)); //=>'feng'
+console.log(str.substr(3)); //=> ' fengpeixunyangfanqihang'截取到末尾
+console.log(str.substring(3, 10000)); //=>'fengpeixunyangfanqihang  截取到末尾(超过索引的也只截取到末尾)
+
+console.log(str.substring(3, 7)); //=> 'feng'
+console.log(str.slice(3, 7)); //=>'feng'
+console.log(str.substring(-7, -3)); //=>''  空字符串，substring不支持负数索引
+console.log(str.slice(-7, -3)); //=>'nqih'  
+// slice支持负数索引，快捷查找:
+//      负数索引，我们可以按照STR.LENGTH+负索引的方式找：
+//          =>slice(26-7,26-3) =>slice(19,23)
+```
+
+### 3.验证字符是否存在验
+
+```
+/*
+    验证字符是否存在
+    index0f(x,y):获取x第一次出现位置的索引，y是控制查找的起始位置索引
+    lastIndex0f(x):最后一次出现位置的索引
+    =>没有这个字符，返回的结果是-1
+*/
+let str = 'zhufengpeixunyangfanqihang';
+console.log(str.indexOf('n')); //=>5
+console.log(str.lastIndexOf('n')); //=>24
+console.log(str.indexOf('@')); //=>-1 不存在返回-1
+if (str.indexOf('@') === -1) {
+    //字符串中不包含@这个字符
+}
+
+console.log(str.indexOf('feng')); //=>3验 证整体第一次出现的位置，返回的索引是第一个字符所在位置的索引值
+console.log(str.indexOf('peiy')); //=>-1
+console.log(str.indexOf('n', 7)); //=>12 查找字符串索引7及之后的字符串中，n第一次出现的位置索引
+
+```
+
+### 4.字符串中字母的大小写转换
+
+```
+/**
+    字符串中字母的大小写转换
+    touppercase():转大写
+    toLowerCase():转小写
+*/
+let str = ' zhuFengPeiXunYangFanQiHang ';
+str = str.toUpperCase();
+console.log(str); //=> ' ZHUFENGPEIXUNYANGF ANQIHANG
+str = str.toLowerCase();
+console.log(str); //=> ' zhufengpeixunyangfanqi hang'
+// 实现首字母大写
+str = str.substr(0, 1).toUpperCase() + str.substr(1);
+console.log(str); //=> ' Zhufengpeixunyangfanqihang '
+```
+
+### 5.字符串分隔和拆分
+
+```
+/*
+    split([ 分隔符]):把字符串按照指定的分隔符拆分成数组(和数组中join对应)
+    split支持传递正则表达式
+*/
+//需求:把|分隔符变为,分隔符
+let str = 'music|movie|eat|sport';
+let ary = str.split('|'); //=>["music", "movie", "eat", "sport"]
+str = ary.join(',');
+console.log(str); //=>"music, movie, eat , sport
+```
+
+### 6.字符串的替换
+
+```
+/*
+    replace(老字符，新字符):实现字符串的替换(经常伴随着正则使用)
+*/
+let str = '珠峰@培训@扬帆@起航';
+// str = str. rep7ace('@'， '-');
+// console. 1og(str); //=>"珠峰-培训@扬帆@起航"，在不使用正则表达式的情况下，执行一次REPLACE只能替换一次字符
+str = str. replace(/@/g, '-');
+console.log(str); //=>珠峰-培训-扬帆-起航
+```
+
+### 7.其他...
+
+```
+// 控制台输出 String.prototype 查看所有字符串中提供的方法
+```
+
+
+
+---
+
+
+
 ---
 
 ---
+
+---
+
+---
+
+---
+
 
 ---
 
