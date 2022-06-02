@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>时钟</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #clockBox {
+            position: absolute;
+            right: 0;
+            top: 0;
+            padding: 0 15px;
+            line-height: 70px;
+            font-size: 24px;
+            color: ■darkred;
+            /*设置背景渐变色*/
+            background: lightblue;
+            background: -webkit-linear-gradient(top left, lightblue,
+                    lightcoral, lightcyan);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="clockBox">
+        2019年07月26日星期五10:25:03
+    </div>
+
+    <script>
+        let clockBox = document.getElementById('clockBox');
+
+
+
+        function init() {
+            clockBox.innerHTML = queryDate();
+        }
+
+        function queryDate() {
+            let time = new Date(),
+                year = time.getFullYear(),
+                month = time.getMonth(),
+                day = time.getDate(),
+                week = time.getDay(),
+                hours = time.getHours(),
+                minutes = time.getMinutes(),
+                seconds = time.getSeconds();
+
+            let result = year + "年" + addZero(month) + "月" + addZero(day) + "日";
+
+            let weekAry = ['日', '一', '二', '三', '四', '五', '六'];
+
+            result += "星期" + weekAry[week] + " ";
+
+            result += addZero(hours) + ":" + addZero(minutes) + ":" + addZero(seconds);
+
+            return result;
+        }
+
+        /* 不足十位补零 */
+        function addZero(val) {
+            val = Number(val);
+            return val < 10 ? '0' + val : val;
+        }
+
+        // 每隔一千毫秒执行一次
+        setInterval(init, 1000);
+
+    </script>
+</body>
+
+</html>
