@@ -1184,7 +1184,7 @@ charCodeAt: 获取指定字符的ASCII码值(Unicode编码值)
     返回查找到的字符
     找不到返回的是空字符串不是undefined，或者对应编码值
 */
-let str = ' zhufengpeixunyangfanqihang';
+let str = 'zhufengpeixunyangfanqihang';
 console.log(str.charAt(0)); //=>'z'
 console.log(str[0]); //=>'z '
 console.log(str.charAt(10000)); //=>''

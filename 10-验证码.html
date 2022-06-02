@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>验证码</title>
+    <style>
+        #codeBox {
+            width: 200px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            border: 1px solid rebeccapurple;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="codeBox">点击获取验证码</div>
+    <span>点击验证码刷新</span><br>
+    <input type="text" id="codeInput">
+    <button id="submit">确定</button>
+
+    <script>
+        let codeBox = document.getElementById('codeBox'),
+            codeInput = document.getElementById('codeInput'),
+            submit = document.getElementById('submit');
+
+        initAndReset();
+        codeBox.onclick = initAndReset;
+        submit.onclick = submitEvent;
+
+        /* 确定按钮 */
+        function submitEvent() {
+            //获取用户和验证码内容(表单元素.value /非标单元素.innerHTML 获取内容)
+            let val = codeInput.value;
+            let code = codeBox.innerHTML;
+
+            if (val.toLowerCase() === code.toLowerCase()) {
+                alert("验证成功！再接再厉！");
+            } else {
+                alert("验证失败！继续努力！");
+            }
+            initAndReset();
+        }
+
+        /* 初始化和重置界面信息 */
+        function initAndReset() {
+            codeBox.innerHTML = queryCode();
+            codeInput.value = '';
+        }
+
+        /* 返回四个字符验证码 */
+        function queryCode() {
+            // 验证码范围
+            let area = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            let result = "";
+            for (let i = 0; i < 4; i++) {
+                let ranIn = Math.random() * area.length;
+                result += area.charAt(ranIn);
+            }
+            return result;
+        }
+
+    </script>
+</body>
+
+</html>
