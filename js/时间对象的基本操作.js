@@ -25,3 +25,5 @@ console.log(time.getTime());
 console.log(time.toLocaleDateString());
 // 获取完整的日期字符串
 console.log(time.toLocaleString());
+
+

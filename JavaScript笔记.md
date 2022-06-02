@@ -24,8 +24,6 @@
 
 ### JS 做客户端语言
 
-> 按照相关的 JS 语法，去操作页面中的元素，有时还要操作浏览器里面的一些功能
-
 - ECMAScript3/5/6...: JS 的语法规范(变量、数据类型、操作语句
   等等)
 - DOM ( document object model): 文档对象模型，提供一些 JS 的
@@ -1475,9 +1473,104 @@ console.log(queryURLParams2(url));
 
   ```
 
+## DOM及其基础操作
+
+> DOM : document object model文档对象模型,提供一些属性和方法供我们操作页面中的元素
+
+### 获取DOM元素的方法
+
+* document.getElementByld()
+
+  ```
+  指定在文档中,基于元素的ID或者这个元素对象
+  ```
+* [context].getElementsByTagName()
+
+  ```
+  在指定上下文(容器)中,通过标签名获取一组元素集合
+  ```
+* [context].getElementsByClassName()
+
+  ```
+  在指定上下文中,通过样式类名获取一组元素集合(不兼容IE6~8 )
+  ```
+* document.getElementsByName()
+
+  ```
+  在整个文档中,通过标签的NAME属性值获取一组元素集合(在IE中只有表单元素的NAME才能识别，所以我们一般只应用于表单元素的处理)
+  ```
+* document.head / document.body / document.documentElement
+
+  ```
+  获取页面中的HEAD/BODY/HTML三个元素
+  ```
+* [context].querySelector([selector])
+
+  ```
+  在指定上下文中,通过选择器获取到指定的元素对象
+  ```
+* [context].querySelectorAll([selector])
+
+  ```
+  在指定上下文中,通过选择器获取到指定的元素集合
+  ```
+* ```
+  //=> queryselector / queryse1ectorAll 不兼容IE6~8
+  1et box = document.querySe1ector('#box');
+  1et links = box.querySe1ectorAll('a');
+  // 1inks=document.querySelectorA11('#box a');
+  1et aas=document.querySe1ectorAll('.aa');
+  ```
+
 ---
 
 ---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+
 
 ---
 
