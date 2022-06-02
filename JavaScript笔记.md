@@ -1290,15 +1290,60 @@ console.log(str); //=>珠峰-培训-扬帆-起航
 
 ```
 // 控制台输出 String.prototype 查看所有字符串中提供的方法
+
+
+
+```
+
+### 8.时间格式字符串处理
+
+```
+// let time = '2019-7-24 12:6:23';
+//=>变为自己需要呈现的格式,例如:
+// "2019年07月24日 12时06分23秒"
+// "2019年07月24日"
+// "07/24 12:06"
+// ...
+
+/* // 方案一: 一路REPLACE
+// let time = '2019-7-24 12:6:23';
+time = time.replace('-', '年').replace('-', '月').replace('', '日')
+    .replace(':', '时').replace(':', '分') + '秒';
+console.log(time); // => "2019年7月24日 12时6分23秒" */
+
+/* // 获取值的方法:基于indexOf获取指定符号索引,基于substring一点点截
+// let time = '2019-7-24 12:6:23';
+let n = time .index0f('-');
+let m = time. lastIndex0f('-');
+let x = time. indexOf(' ');
+let y = time. indexOf(':');
+let z = time. lastIndexOf(':');
+let year = time.substring(0, n);
+let month = time.substring(n + 1, m);
+let day = time . substring(m + 1, x);
+console. log(year, month, day); */
+
+//获取值的方法:基于SPLIT一项项的拆分
+// let time = '2019-7-24 12:6:23';
+// let n = time.split(' '); //=> ["2019-7-24", "12:6:23"]
+// let m=  n[0].split('-'); //=> ["2019", "7", "24"]
+// let x = n[1].split(':'); //=> ["12", "6", "23"]
+
+
+
+// 方案二: 获取到年月日小时分钟秒这几个值后，最后想拼成什么效果就拼成什么
+let addZero = val => val.length < 2 ? '0' + val : val;
+
+let time = '2019-7-24 12:6:23';
+let ary = time.split(/(?: |-|:)/g); //=> ["2019","7", "24", "12","6","23"]
+time = ary[0] + '年' + addZero(ary[1]) + '月' + addZero(ary[2]) + '日';
+console.log(time);
 ```
 
 
 
----
+> 实现一个方法queryURLParameter获取一个URL地址问号后面传递的参数信息
 
-
-
----
 
 ---
 
@@ -1308,6 +1353,7 @@ console.log(str); //=>珠峰-培训-扬帆-起航
 
 ---
 
+---
 
 ---
 
