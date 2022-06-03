@@ -1,0 +1,123 @@
+<!--
+ * @Author: LLW
+ * @Date: 2022-06-02 16:38:30
+ * @LastEditors: LLW
+ * @LastEditTime: 2022-06-03 10:41:44
+ * @Description: 请填写简介
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>获取元素</title>
+
+    <style>
+        .tabBox{
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="tabBox" id="tabBox">
+        <ul class="tab" id="tab">
+            <li>第1个页卡</li>
+            <li>第2个页卡</li>
+            <li>第3个页卡</li>
+            <li>第4个页卡</li>
+            <li>第5个页卡</li>
+        </ul>
+        <div class="tab1" id="tab1">第一个要用的内容
+            <ul class="news" id="news">
+                <li>第1条新闻</li>
+                <li>第2条新闻</li>
+                <li>第3条新闻</li>
+                <li>第4条新闻</li>
+                <li>第5条新闻</li>
+            </ul>
+        </div>
+        <div class="tab2" id="tab2">第二个要用的内容
+            <div>第1个div</div>
+            <div>第2个div</div>
+            <div>第3个div</div>
+            <div>第4个div</div>
+            <div>第5个div</div>
+        </div>
+    </div>
+
+    <!--  
+        type="checkbox" 复选框
+        type="radio"    单选框
+     -->
+    <input type="radio" name="sex" value="男" checked>男
+    <input type="radio" name="sex" value="女" >女
+    <button id="submit">确定</button>
+
+    <!--  -->
+    <script>
+
+        let btn_submit = document.getElementById('submit');  
+        let sex_list = document.getElementsByName('sex');  
+
+        btn_submit.onclick = function(){
+            let res = null;
+            for (let i = 0; i < sex_list.length; i++) {
+                let item = sex_list[i];
+                if(item.checked){
+                    res = item.value;
+                    break;
+                }
+            }
+            alert(res);
+        }
+
+        /* 
+            getElementById()
+            根据id获取元素对象
+        */
+        // let tabBox = document.getElementById('tabBox');
+        // console.log(tabBox);
+
+        /* 
+            getElementsByClassName()
+            得到的是数组
+        */
+        // tabBox = document.getElementsByClassName('tabBox');
+        // console.log(tabBox);
+
+        /* 
+            querySelector() 
+            获取的是一个元素对象，那怕页面中有多个符合的，也只获取第一个
+        */
+        // tabBox = document.querySelector(".tabBox");
+        // console.log(tabBox);
+
+        /* 
+            querySelectorAll() // 不兼容低版本浏览器
+            获取的是一个元素集合，那怕页面中只有一个符合的
+        */
+        // tabBox = document.querySelectorAll(".tabBox");
+        // console.log(tabBox);
+
+        /* 
+            querySelectorAll // 不兼容低版本浏览器
+            tabBox.getElementsByTagName('li');
+           
+            获取指定上下文后代中所有的标签名为li的元素集合
+        */
+        // let navList = tabBox[0].getElementsByTagName('li');
+        // console.log(navList);
+
+        // navList = tabBox[0].querySelectorAll('.tabBox .news li');
+        // console.log(navList);
+
+        // let divList = tabBox[0].querySelectorAll('.tabBox>div');
+        // console.log(divList[0]);
+        // console.log(divList[1]);
+        
+
+    </script>
+</body>
+
+</html>
