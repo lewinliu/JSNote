@@ -1,4 +1,4 @@
-### 常用的浏览器
+### sh常用的浏览器
 
 - webkit 内核(V8 引擎)
   - 谷歌 Chrome
@@ -425,7 +425,7 @@ let i=1;
 
 > 函数没有写RETURN，函数默认返回值是undefined
 
-### 执行函数
+#### 执行函数
 
 > 匿名函数
 > 匿名函数之函数表达式:把-一个匿名函数本身作为值赋值给其它东西，这种函数一般不是手动触发执行，而且靠其它程序驱动触发执行(例如:触发某个事件的时候把它执行等)
@@ -446,35 +446,37 @@ let i=1;
 
 ### 浏览器常用的输出方式
 
-- 1.在控制台输出：console.log/dir/table.. .
+#### 1.在控制台输出：console.log/dir/table.. .
 
-  - console.log():
-  - console.dir():
+- console.log():
+- console.dir():
 
-    ``输出一个对象的详细键值对信息``
-  - console.table():
+  ``输出一个对象的详细键值对信息``
+- console.table():
 
-    ``把一个多维JSON数组在控制台按照表格的方式呈现出来``
-- 2.浏览器窗口弹窗：alert/confirm/ prompt
+  ``把一个多维JSON数组在控制台按照表格的方式呈现出来``
 
-  - alert(1);
+#### 2.浏览器窗口弹窗：alert/confirm/ prompt
 
-    ``弹出提示窗口，显示1；``
-  - confirm( '确定要干啥吗? ' );
+- alert(1);
 
-    ``确定和取消:选择型弹框``
-  - prompt('确定要干啥吗?写出原因! ');
+  ``弹出提示窗口，显示1；``
+- confirm( '确定要干啥吗? ' );
 
-    ``在CONFIRM的基础.上多了-一个输入框``
+  ``确定和取消:选择型弹框``
+- prompt('确定要干啥吗?写出原因! ');
 
-    ``=>三种方式输出的结果都必先经过toString转换为字符串 =>三种方式 会阻断JS代码的执行，只有当窗口关掉，JS才会继续运行 for(leti=0;i<5;i++){ alert(i); console.log('哈哈'); }``
-- 3.在页面中写入信息
+  ``在CONFIRM的基础.上多了-一个输入框``
 
-  - document.write
+  ``=>三种方式输出的结果都必先经过toString转换为字符串 =>三种方式 会阻断JS代码的执行，只有当窗口关掉，JS才会继续运行 for(leti=0;i<5;i++){ alert(i); console.log('哈哈'); }``
 
-    ```
-    =>和alert一样，输出的结果都是字符串
-    ```
+#### 3.在页面中写入信息
+
+- document.write
+
+  ```
+  =>和alert一样，输出的结果都是字符串
+  ```
 
 ## 函数
 
@@ -716,7 +718,7 @@ Math.abs();
 
 ### Math中常用的属性和方法
 
-> 1. Math.abs([number value]);	//获取绝对值(绝对值永远是正数或者零)
+#### Math.abs([number value]);	//获取绝对值(绝对值永远是正数或者零)
 
 ```
 console.log(Math.abs(-12.5)); //=>12.5
@@ -734,7 +736,7 @@ console.log(Math.abs('-1px')); //=>NaN
 console.log(Math.abs(true)); //=>1| I
 ```
 
-> 2. Math.ceil / floor([number value]); 把一个数向.上取整/向下取整
+#### Math.ceil / floor([number value]); 把一个数向.上取整/向下取整
 
 ```
 console.log(Math.cei1(12)); //=>12
@@ -758,7 +760,7 @@ console.log(Math.f1oor(-12.1)); //=>-13
 console.log(Math.f1oor(-12.9)); //=>-13
 ```
 
-> 3. Math.round();    四舍五入
+#### Math.round();    四舍五入
 
 ```
 console.log(Math.round(12)); //=>12
@@ -776,7 +778,7 @@ console.log(Math.round(-12.5)); //=>-12负数中. 5属于舍
 console.log(Math.round(-12.9)); //=>-13
 ```
 
-> 4. Math.max | min(va1[val1],[val2],...);    获取一堆数中的最大值和最小值
+#### Math.max | min(va1[val1],[val2],...);    获取一堆数中的最大值和最小值
 
 ```
 console.log(Math.max(12, 5, 68, 23, 45, 3, 27)); //=>68
@@ -788,7 +790,7 @@ console.log(Math.min(12, 5, 68, 23, 45, 3, 27)); //=>3
 Math.max([12, 5, 68, 23, 45, 3, 27]); //=>NaN   此处是只传第一个值，是个数组，和内置的语法要求不符
 ```
 
-> 5. Math.sqrt/pow();	// sqrt:给一个数开平方;	 pow :计算一个数的多少次幂
+#### Math.sqrt/pow();	// sqrt:给一个数开平方;	 pow :计算一个数的多少次幂
 
 ```
 console.log(Math.sqrt(9)); //=>3符 合N*N=M这样的M才能整开平方
@@ -798,7 +800,7 @@ console.log(Math.sqrt(-9)); //=>NaN 负数开不了平方
 console.log(Math.pow(2, 10)); //=>1024
 ```
 
-> 6. Math.random();	// 获取0~1之间的随机小数
+#### Math.random();	// 获取0~1之间的随机小数
 
 ```
 // 获取[n~m]之间的随机整数
@@ -1425,53 +1427,74 @@ console.log(queryURLParams2(url));
 >
 > ```
 
-- getFullYear()
-  ```
-  获取年
-  ```
-- getMonth()
-  ```
-  获取月：结果是0~11代表第一月到第十二月
-  ```
-- getDate()
-  ```
+#### 1、getFullYear()
 
-  获取日
-  ```
-- getDay()
-  ```
-  获取星期：获取星期结果是0~6代表周日 到周六
-  ```
-- getHours()
-  ```
-  获取时
-  ```
-- getMinutes()
-  ```
-  获取分
-  ```
-- getSeconds()
-  ```
-  获取秒
-  ```
-- getMilliseconds()
-  ```
-  获取毫秒
-  ```
-- getTime()
-  ```
-  获取当前：日期距离1970/1/100:00:00这个日期之间的毫秒差
-  ```
-- toLocaleDateString()
-  ```
-  获取年月日(字符串)
+```
+获取年
+```
 
-  ```
-- toLocaleString()
-  ```
-  获取完整的日期字符串
+#### 2、getMonth()
 
-  ```
+```
+获取月：结果是0~11代表第一月到第十二月
+```
+
+#### 3、getDate()
+
+```
+
+获取日
+```
+
+#### 4、getDay()
+
+```
+获取星期：获取星期结果是0~6代表周日 到周六
+```
+
+#### 5、getHours()
+
+```
+获取时
+```
+
+#### 6、getMinutes()
+
+```
+获取分
+```
+
+#### 7、getSeconds()
+
+```
+获取秒
+```
+
+#### 8、getMilliseconds()
+
+```
+获取毫秒
+```
+
+#### 9、getTime()
+
+```
+获取当前：日期距离1970/1/100:00:00这个日期之间的毫秒差
+```
+
+#### 10、toLocaleDateString()
+
+```
+获取年月日(字符串)
+
+```
+
+#### 11、toLocaleString()
+
+```
+获取完整的日期字符串
+
+```
 
 ## DOM及其基础操作
 
@@ -1479,48 +1502,128 @@ console.log(queryURLParams2(url));
 
 ### 获取DOM元素的方法
 
-* document.getElementByld()
+#### 1、document.getElementByld()
 
-  ```
-  指定在文档中,基于元素的ID或者这个元素对象
-  ```
-* [context].getElementsByTagName()
+```
+指定在文档中,基于元素的ID或者这个元素对象
+```
 
-  ```
-  在指定上下文(容器)中,通过标签名获取一组元素集合
-  ```
-* [context].getElementsByClassName()
+#### 2、[context].getElementsByTagName()
 
-  ```
-  在指定上下文中,通过样式类名获取一组元素集合(不兼容IE6~8 )
-  ```
-* document.getElementsByName()
+```
+在指定上下文(容器)中,通过标签名获取一组元素集合
+```
 
-  ```
-  在整个文档中,通过标签的NAME属性值获取一组元素集合(在IE中只有表单元素的NAME才能识别，所以我们一般只应用于表单元素的处理)
-  ```
-* document.head / document.body / document.documentElement
+#### 3、[context].getElementsByClassName()
 
-  ```
-  获取页面中的HEAD/BODY/HTML三个元素
-  ```
-* [context].querySelector([selector])
+```
+在指定上下文中,通过样式类名获取一组元素集合(不兼容IE6~8 )
+```
 
-  ```
-  在指定上下文中,通过选择器获取到指定的元素对象
-  ```
-* [context].querySelectorAll([selector])
+#### 4、document.getElementsByName()
 
-  ```
-  在指定上下文中,通过选择器获取到指定的元素集合
-  ```
-* ```
-  //=> queryselector / queryse1ectorAll 不兼容IE6~8
-  1et box = document.querySe1ector('#box');
-  1et links = box.querySe1ectorAll('a');
-  // 1inks=document.querySelectorA11('#box a');
-  1et aas=document.querySe1ectorAll('.aa');
-  ```
+```
+在整个文档中,通过标签的NAME属性值获取一组元素集合(在IE中只有表单元素的NAME才能识别，所以我们一般只应用于表单元素的处理)
+```
+
+#### 5、document.head / document.body / document.documentElement
+
+```
+获取页面中的HEAD/BODY/HTML三个元素
+```
+
+#### 6、[context].querySelector([selector])
+
+```
+在指定上下文中,通过选择器获取到指定的元素对象
+```
+
+#### 7、[context].querySelectorAll([selector])
+
+```
+在指定上下文中,通过选择器获取到指定的元素集合
+```
+
+```
+//=> queryselector / queryse1ectorAll 不兼容IE6~8
+1et box = document.querySe1ector('#box');
+1et links = box.querySe1ectorAll('a');
+// 1inks=document.querySelectorA11('#box a');
+1et aas=document.querySe1ectorAll('.aa');
+```
+
+
+
+### JS中的节点和描述节点之间关系的属性
+
+> 节点: Node (页面中所有的东西都是节点)
+
+> 节点集合: NodeList ( getElementsByName / querySelectorAll获取的都是节点集合)
+
+#### 元素节点(元素标签)
+
+```
+    nodeType : 1
+
+    nodeName : 大写的标签名
+
+    nodeValue : null
+```
+
+#### 文本节点
+
+```
+    nodeType : 3
+
+    nodeName : 大写的标签名
+
+    nodeValue : 文本内容
+```
+
+#### 注释节点
+
+```
+    nodeType : 8
+
+    nodeName : '#commen'
+
+    nodeValue : 注释内容
+```
+
+#### 文档节点document
+
+```
+    nodeType : 9
+
+    nodeName : '#document'
+
+    nodeValue : null
+
+    ......
+```
+
+#### 描述这些节点之间关系的属性
+
+```
+    childNodes : 获取所有的子节点
+
+    children : 获取所有的元素子节点(子元素标签)
+
+    firstChild : 获取第一个子节点
+
+    lastChild : 获取最后一个子节点
+
+    firstElementChild / lastElementChild : 获取第一个和最后一个元素子节点（不兼容IE6~8）
+
+    previousSibling :获取上一个哥哥节点
+
+    nextSibling :获取下一个弟弟节点
+
+    previousElementSibling / nextElementSibling : 获取哥哥和弟弟元素节点(不兼容IE6~8 )
+
+    ......
+```
+
 
 ---
 
@@ -1569,8 +1672,6 @@ console.log(queryURLParams2(url));
 ---
 
 ---
-
-
 
 ---
 
