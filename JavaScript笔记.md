@@ -2076,57 +2076,134 @@ nodeValue : null
 #### 把元素添加到容器的末尾 appendChild
 <a name="rtGaA"></a>
 #### 把元素添加到指定元素的前面 insertBefore
-```javascript
+```html
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> DOM动态操作 </title>
-</head>
-
-<body>
-
-    <div id="aa">aaaaaa</div>
-
-    <script>
-
-        // 动态创建一个 div 元素对象，把其赋给 box
-        let box = document.createElement('div');
-        box.id = 'boxActive';
-        box.style.width = '200px';
-        box.style.height = '200px';
-        box.style.backgroundColor = 'green';
-        box.style.color = 'yellow';
-        box.className = 'box';
-
-        // 动态创建文本，
-        let text = document.createTextNode('认真学习');
-
-        // 添加:容器. appendChild(元素)
-        document.body.appendChild(box);
-        box.appendChild(text);
-
-
-        // 放到指定元素前:容器. insertBefore([指定元素]，[新增元素])
-        let aa = document.getElementById("aa");
-        // aa.parentNode.insertBefore(...);
-        document.body.insertBefore(box, aa);
-
-
-    </script>
-
-</body>
-
+	
+	<head>
+		<meta charset="UTF-8">
+		<title> DOM动态操作 </title>
+	</head>
+	
+	<body>
+		
+		<div id="aa">aaaaaa</div>
+		
+		<script>
+			
+			// 动态创建一个 div 元素对象，把其赋给 box
+			let box = document.createElement('div');
+			box.id = 'boxActive';
+			box.style.width = '200px';
+			box.style.height = '200px';
+			box.style.backgroundColor = 'green';
+			box.style.color = 'yellow';
+			box.className = 'box';
+			
+			// 动态创建文本，
+			let text = document.createTextNode('认真学习');
+			
+			// 添加:容器. appendChild(元素)
+			document.body.appendChild(box);
+			box.appendChild(text);
+			
+			
+			// 放到指定元素前:容器. insertBefore([指定元素]，[新增元素])
+			let aa = document.getElementById("aa");
+			// aa.parentNode.insertBefore(...);
+			document.body.insertBefore(box, aa);
+			
+			
+		</script>
+		
+	</body>
+	
 </html>
 
 ```
 ![B65UL{]O(4(%CP))(1A0EX5.png](https://cdn.nlark.com/yuque/0/2022/png/29066467/1654480160474-f7cd987b-7c8d-45ad-90b8-ae70a54558ca.png#clientId=uf514a4d9-a433-4&crop=0&crop=0&crop=1&crop=1&from=drop&id=uf8435a7c&margin=%5Bobject%20Object%5D&name=B65UL%7B%5DO%284%28%25CP%29%29%281A0EX5.png&originHeight=313&originWidth=350&originalType=binary&ratio=1&rotation=0&showTitle=false&size=4156&status=done&style=none&taskId=ufe0803a6-a7d8-4b6f-aa90-33bb0c23acf&title=)
+<a name="zwiqP"></a>
+#### 克隆元素或者节点（深克隆浅克隆）
+>  [document].**cloneNode**(false/true);
+
+<a name="lCCno"></a>
+#### 移除元素 removeChild
+> 容器.**removeChild**(元素)
+
+```html
+<div class="box">
+	<span>好好学习</span>
+</div>
+
+<script>
+	
+	// 找到class名称为.box的元素
+	let box1 = document.querySelector('.box');
+	
+	// 克隆第一份(深克隆)
+	let box2 = box1.cloneNode(true);
+	// 连子元素一起克隆
+	box2.querySelector('span').innerText = '天天向上';
+	
+	// 克隆第二份(浅克隆)
+	let box3 = box1.cloneNode(false);
+	// 未克隆子元素，手动添加一个
+	box3.innerHTML = "<span>学个屁学习</span>";
+	
+	document.body.appendChild(box2);
+	document.body.appendChild(box3);
+	
+	//移除元素，容器.removeChild(元素)
+	document.body.removeChild(box2);
+</script>
+
+```
+<a name="w4O5l"></a>
+#### 设置/获取/移除元素的自定义属性信息
+> **setAttribute **/ **getAttribute **/ **removeAttribute **
+> 设置/获取/移除元素的自定义属性信息(这种方式是把自定义属性放到元素结构上)
+
+```html
+<!-- 
+	setAttribute / getAttribute / removeAttribute 
+	设置/获取/移除元素的自定义属性信息(这种方式是把自定义属性放到元素结构上) -->
 
 
+<button>按钮1</button>
+<button>按钮2</button>
+<button>按钮3</button>
 
+<!-- IMPORT JS -->
+<script>
+
+	var btnList = document.querySelectorAll('button');
+
+	for (var i = 0; i < btnList.length; i++) {
+
+		/* 
+            // 设置自定义属性:元素对象.属性名=属性值(原理是向元素对象对应的推内左中添加了一个属性)
+            btnList[i].mIndex = i;
+            btnList[i].onclick = function () {
+                // 获取自定义属性:元素对象.属性名(原理是从堆内存中获取到对应的属性值)
+                alert(this.mIndex);
+            } */
+
+		// 设置自定义属性:基于 setAttribute 是把属性信息写到了元素标签的结构上(在结构中可以看到的)，并没有放到元素对象对应的堆内存中.
+		btnList[i].setAttribute('data_index', i);
+		btnList[i].onclick = function () {
+			// 基于 getAttribute 可以把结构上存储的自定义属性值获取到
+			let data_index = this.getAttribute('data_index');
+			alert(data_index !== null ? data_index : 'data_index已被删除');
+
+		}
+		// 移除属性
+		btnList[1].removeAttribute('data_index');
+	}
+
+</script>
+```
+
+1<br />2<br />3<br />4
 <a name="xEzKz"></a>
 # Index，从这里开始
 
