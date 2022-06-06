@@ -24,12 +24,9 @@
 
 ### JS 做客户端语言
 
-- ECMAScript3/5/6...: JS 的语法规范(变量、数据类型、操作语句
-  等等)
-- DOM ( document object model): 文档对象模型，提供一些 JS 的
-  属性和方法，用来操作页面中的 DOM 元素
-- BOM (browser object model) ：浏览器对象模型，提供一些 JS 的
-  属性和方法，用来操作浏览器的
+- ECMAScript3/5/6...: JS 的语法规范(变量、数据类型、操作语句等等)
+- DOM ( document object model): 文档对象模型，提供一些 JS 的属性和方法，用来操作页面中的 DOM 元素
+- BOM (browser object model) ：浏览器对象模型，提供一些 JS 的属性和方法，用来操作浏览器的
 
 ### JS 中的变量 variable
 
@@ -1552,8 +1549,6 @@ console.log(queryURLParams2(url));
 1et aas=document.querySe1ectorAll('.aa');
 ```
 
-
-
 ### JS中的节点和描述节点之间关系的属性
 
 > 节点: Node (页面中所有的东西都是节点)
@@ -1623,7 +1618,6 @@ console.log(queryURLParams2(url));
 
     ......
 ```
-
 
 ---
 

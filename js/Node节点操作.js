@@ -2,7 +2,7 @@
  * @Author: LLW
  * @Date: 20220603 14:45:44
  * @LastEditors: LLW
- * @LastEditTime: 2022-06-03 16:54:41
+ * @LastEditTime: 2022-06-04 16:57:28
  * @Description: 请填写简介
  */
 
@@ -37,10 +37,10 @@ console.log(box.firstElementChild);
 var fangqi = document.getElementById('fangqi');
 //获取上一个哥哥元素节点
 function prev(context) {
-    
+
     //先找自己的哥哥(当前结点的前一个结点)
     var pre = context.previousSibling;
-    
+
     //如果哥哥不是元素，则找哥哥的哥哥，一直到找到的是元素节点为止
     while (pre.nodeType !== 1) {
         pre = pre.previousSibling;
@@ -54,3 +54,6 @@ console.log(prev(fangqi));
 // jQuery中提供一些方法供我们获取元素: children、prev、next. prevA11、 nextAll、 sibling、 siblings 、index...
 
 
+
+let i = 3;
+console.log(5 + (++i) + (i++) + 3 - 2 + (--i) + (i--) - 2);
