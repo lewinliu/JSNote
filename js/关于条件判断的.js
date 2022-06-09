@@ -2,7 +2,7 @@
  * @Author: LLW
  * @Date: 2022-06-09 14:33:22
  * @LastEditors: LLW
- * @LastEditTime: 2022-06-09 15:34:59
+ * @LastEditTime: 2022-06-09 16:35:46
  * @Description: 关于 变量提升 & 条件判断
  */
 
@@ -10,7 +10,7 @@
 /* 
 流程：
     1.先进行变量提升，声明变量：var a;
-    2.变量 a 在if条件判断中，不在变量提升阶段赋值;
+    2.只有function声明变量才会在变量提升阶段赋值;
     3.if ('a' in window) 条件成立，变量 a 才会进行赋值操作;
 */
 // console.log(a); // undefined
