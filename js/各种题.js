@@ -210,30 +210,178 @@ D. parseFloat(null) */
 //     console.log(i);// 3
 
 
-//扩展:“变态题”(锻炼数据类型基础知识)
-    console.log();
-// 题目一：只有 0、NaN、''、null、undefined 五个值转换为 FALSE， 其余都转换为 TRUE
-    ! (!"Number (undefined) ");// false
-// 题目二：
-    isNaN (parseInt(new Date())) + Number([1]) + typeof undefined;
-// 题目三：
-    Boolean(Number("")) + !isNaN (Number (nu11)) + Boolean("parseInt([] )") + typeof ! (nu11 );
-// 题目四：
-    parseFloat("1.6px") + parseInt("1.2px") + typeof parseInt(nu11);
-// 题目五：
-    isNaN (Number(! !Number(parseInt("0.8"))));
-// 题目六：
-    console. log(1 + "2" + "2");
+// //扩展:“变态题”(锻炼数据类型基础知识)
+//     console.log();
+// // 题目一：只有 0、NaN、''、null、undefined 五个值转换为 FALSE, 其余都转换为 TRUE
+//     ! (!"Number (undefined) ");// false
+// // 题目二：
+//     isNaN (parseInt(new Date())) + Number([1]) + typeof undefined;
+// // 题目三：
+//     Boolean(Number("")) + !isNaN (Number (null)) + Boolean("parseInt([] )") + typeof ! (nu11 );
+// // 题目四：
+//     parseFloat("1.6px") + parseInt("1.2px") + typeof parseInt(nu11);
+// // 题目五：
+//     isNaN (Number(! !Number(parseInt("0.8"))));
+// // 题目六：
+//     console. log(1 + "2" + "2");
+// // 题目七：
+//     !typeof parseFloat("0");
+// // 题目八：
+//     Number("");
+// // 题目九：
+//     typeof "parseInt(null)"+ 12 + !!Number (NaN);
+// // 题目十：
+//     !typeof (isNaN("")) + parseInt (NaN) ;
+// // 题目十一：
+//     typeof ! parseInt(null) + ! isNaN(null);
+
+
+
+
+
+// // 作用域&变量提升
+// // 题目一：
+// f = function () {
+//     return true;
+// }
+// g = function () {
+//         return false;
+//     }
+
+// ~function () {
+//     console.log('typeof g :' + typeof g); // typeof g :undefined
+//     console.log('typeof f :' + typeof f + ', f='+f()); // typeof f :function, f=true
+//     if (g() && [] == ![]) { // Uncaught TypeError: g is not a function
+//         f = function () {
+//             return false;
+//         }
+
+//         function g() {
+//             return true;
+//         }
+//     }
+// }();
+// console.log(f());
+// console.log(g());
+
+
+
+// // 题目二：
+// console.log(a, b, c); 
+// // 269: undefined undefined undefined
+// var a = 12,
+//     b = 13,
+//     c = 14;
+
+// function fn(a) {
+//     console.log(a, b, c); // 276: 10 13 14
+//     a = 100;
+//     c = 200;
+//     console.log(a, b, c); // 279: 100 13 200
+// }
+// b = fn(10); // 无返回值默认返回undefined
+
+// console.log(a, b, c); 
+// // 285: 12 undefined 200
+
+
+
+// // 题目三：
+// var ary = [12, 23]; 
+
+// function fn(ary) {
+//     console.log(ary); // [12, 23]
+//     ary[0] = 100; // [100, 23]
+//     ary = [100]; // 创造了一个新的堆内存
+//     ary[0] = 0; // 现在改变的是新的堆内存中的值
+//     console.log(ary); // [0]
+// }
+// fn(ary); 
+// // 将数组的堆地址传递给fn，所以fn中改变的是该地址指向的堆内存中的值
+// console.log(ary); // [100, 23]
+
+
+
+// // 题目四：写出下面代码输出的结果(如何查找上级作用域和堆栈内存释放问题)
+// var n = 1;
+
+// function fn() {
+//     var n = 2;
+
+//     function f() {
+//         n--; // fn() => n--
+//         console.log(n);
+//     }
+//     f();
+//     return f; // 
+// }
+// var x = fn(); // fn() => n=1
+// x(); // fn() => n=0
+// console.log(n); // 1
+
+
+
+// // 题目五：
+// var i = 0;
+
+// function A() {
+//     var i = 10;
+
+//     function x() {
+//         console.log(i);
+//     }
+//     return x;
+// }
+// var y = A();
+// y(); // 10
+
+// function B() {
+//     var i = 20;
+//     y();
+// }
+// B(); // 10
+
+
+
+// // 题目六：
+// var i = 5;
+
+// function fn(i) {
+//     return function (n) {
+//         console.log(n + (++i));
+//     }
+// }
+// var f = fn(1);
+// f(2);       // 4
+// fn(3)(4);   // 8
+// fn(5)(6);   // 12
+// f(7);       // 10
+// //f占用fn(1)开辟的私有作用域地址，fn未消毁i，再次++i=3；
+// console.log(i); // 5
+
+
+
+
 // 题目七：
-    !typeof parseF1oat("0");
-// 题目八：
-    Number("");
-// 题目九：
-    typeof "parseInt(nu11)"+ 12 + !!Number (NaN);
-// 题目十：
-    !typeof (isNaN("")) + parseInt (NaN) ;
-// 题目十一：
-    typeof ! parseInt(nu11) + ! isNaN(nu11);
+var i = 20;
+
+function fn() {
+    i -= 2;
+    return function (n) {
+        console.log((++i) - n);
+    }
+}
+var f = fn();
+f(1); // 18
+f(2); // 18
+
+fn()(3); // 16
+fn()(4); // 14
+f(5); // 14
+console.log(i); // 19
+
+
+
 
 
 
