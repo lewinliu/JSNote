@@ -1,3 +1,10 @@
+<!--
+ * @Author: LLW
+ * @Date: 2022-05-25 22:19:05
+ * @LastEditors: LLW
+ * @LastEditTime: 2022-06-11 09:22:40
+ * @Description: 请填写简介
+-->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +12,7 @@
     <meta charset="UTF-8">
     <title>选项卡</title>
     <link rel="stylesheet" href="css/tab.css">
-    
+
 </head>
 
 <body>
@@ -19,7 +26,33 @@
         <div>读书使我幸福</div>
         <div>运动使我健康</div>
     </div>
-    <script src="js/tab.js"></script>
+
+    <!-- <script src="js/tab.js"></script> -->
+
+    <script>
+        var tabBox = document.getElementById("tabBox");
+        var navBox = document.getElementById("navBox");
+        var tabList = tabBox.getElementsByTagName('div');
+        var navList = navBox.getElementsByTagName('li');
+
+        var changeTab = function (clickIndex) {
+
+            for (var i = 0; i < navList.length; i++) {
+                tabList[i].className = '';
+                navList[i].className = '';
+            }
+            tabList[clickIndex].className = 'active';
+            navList[clickIndex].className = 'active';
+        }
+
+        for (var i = 0; i < navList.length; i++) {
+            navList[i].mIndex = i;
+            navList[i].onclick = function () {
+                changeTab(this.mIndex);
+            }
+        }
+
+    </script>
 </body>
 
 </html>
