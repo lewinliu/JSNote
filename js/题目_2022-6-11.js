@@ -2,7 +2,7 @@
  * @Author: LLW
  * @Date: 2022-06-11 15:21:03
  * @LastEditors: LLW
- * @LastEditTime: 2022-06-12 10:34:30
+ * @LastEditTime: 2022-06-12 16:52:34
  * @Description: 练习题
  *          
  * 建议大家每一道题都要画图 (尤其是复杂一些的题目)， 画图过程能让我们把基础知识掌握的更加扎实,而且更加有效的算出正确的答案
@@ -256,23 +256,171 @@
 
 
 
-// 11.输出结果为（画图）：
-var a = 9;
+// // 11.输出结果为（画图）：
+// var a = 9;
 
-function fn() {
-    a = 0;
-    return function (b) {
-        return b + a++;
-    }
+// function fn() {
+//     a = 0;
+//     return function (b) {
+//         return b + a++;
+//     }
+// }
+// var f = fn(); // a = 0;
+// console.log(f(5)); // return 5; a = 1;
+// console.log(fn()(5)); // a = 0; return 5;  a = 1;
+// console.log(f(5)); // return 6; a = 2;
+// console.log(a); // a = 2;
+// // 5 5 6 2; => D
+// /*
+// A、6 6 7 2
+// B、5 6 7 3
+// C、5 5 6 3
+// D、以上答案都不正确
+// */
+
+
+
+
+// 问答题
+// // 1.
+// var ary = [1, 2, 3, 4];
+
+// function fn(ary) {
+//     ary[0] = 0;
+//     ary = [0];
+//     ary[0] = 100;
+//     return ary;
+// }
+// var res = fn(ary);
+// console.log(ary); // [0, 2, 3, 4];
+// console.log(res); // [100];
+
+
+// // 2.
+// function fn(i) {
+//     return function (n) {
+//         console.log(n + (i++));
+//     }
+// }
+// var f = fn(10); 
+// // i=10; return function (n) {console.log(n + (i++));}
+// f(20); // 30
+// // i=10; n + (i++) => 20+10 => 30; i=11;
+// fn(20)(40); // 60
+// // 40 + 20 => 60;
+// fn(30)(50); // 80
+// // 50 + 30 => 80;
+// f(30); // 41
+// // i=11; n + (i++) => 30+11 => 41; i=12;
+
+
+// // 3.
+// var i = 10;
+
+// function fn() {
+//     return function (n) {
+//         console.log(n + (++i));
+//     }
+// }
+// var f = fn();
+// f(20); // 31
+// fn()(20); // 32
+// fn()(30); // 43
+// f(30); // 44
+
+
+
+// // 4.
+// var test = (function (i) {
+//     return function () {
+//         alert(i *= 2);
+//     }
+// })(2); // alert(4);
+// test(5); // 没有形参
+
+// // alert弹出一次：
+// //  1. alert(4);
+
+
+
+// // // 5.
+// var a = 1;
+// var obj = {
+//     'name': 'tom'
+// }
+
+// function fn() {
+//     var a2 = a;
+//     obj2 = obj;
+//     a2 = a;
+//     obj2.name = "jack";
+// }
+// fn();
+// console.log(a); // 1
+// console.log(obj); // name: 'jack'
+
+
+
+// // 6.变量提升与覆盖
+// var a = 1;
+
+// function fn(a) {
+//     /*
+//     形参赋值
+//         a =1;
+//     变量提升
+//         var a; (无效)
+//         function a...; (声明无效，但是需要给a赋值为函数)
+//     a=function...
+//     */
+//     console.log(a); // => a() {}
+//     var a = 2;
+
+//     function a() {}
+//     console.log(a); // => 2
+//     // => 代码执行过程
+//     // => a=2;
+//     // => function a() {} => 跳过(变量提升阶段已经赋值过);
+//     // => console.log(a); => 2
+// }
+// fn(a)
+// console.log(a); // 1
+
+
+// /*
+//  * 变量提升
+//  *   fn = AF3 (函数是输出3的)
+//  */
+// fn(); //=>3
+// function fn() {
+//     conso1e.log(1);
+// }
+// fn(); //=>3
+// function fn() {
+//     console.log(2);
+// }
+// fn(); //=>3
+// var fn = 10; //=>fn = 10
+// fn(); //=>Uncaught TypeError: fn is not a function
+// function fn() {
+//     console.log(3);
+// }
+// fn();
+
+
+
+
+// 7.
+var a = 0,
+b = 0;
+
+function A(a) {
+    A = function (b) {
+        alert(a + b++);
+    };
+    alert(a++);
 }
-var f = fn();
-console.log(f(5));
-console.log(fn()(5));
-console.log(f(5));
-console.log(a);
-/*
-A、6 6 7 2
-B、5 6 7 3
-C、5 5 6 3
-D、以上答案都不正确
-*/
+
+
+
+
