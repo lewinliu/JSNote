@@ -2,7 +2,7 @@
  * @Author: LLW
  * @Date: 2022-06-11 15:21:03
  * @LastEditors: LLW
- * @LastEditTime: 2022-06-13 09:02:14
+ * @LastEditTime: 2022-06-13 10:45:12
  * @Description: 练习题
  *          
  * 建议大家每一道题都要画图 (尤其是复杂一些的题目)， 画图过程能让我们把基础知识掌握的更加扎实,而且更加有效的算出正确的答案
@@ -410,24 +410,24 @@
 
 
 
-// 7.
-var a = 0,
-    b = 0;
+// // 7.这题比较经典，重点
+// var a = 0,
+//     b = 0;
 
-function A(a) {
-    // 改变了全局变量function A 的值；
-    A = function (b) {
-        alert(a + b++);
-    };
-    alert(a++);
-}
-A(1);
-// alert(1); a=2;
-A(2);
-// alert(4);
+// function A(a) {
+//     // 改变了全局变量function A 的值；
+//     A = function (b) {
+//         alert(a + b++);
+//     };
+//     alert(a++);
+// }
+// A(1);
+// // alert(1); a=2;
+// A(2);
+// // alert(4);
 
 
- 
+
 // 三:附加思考题(面试题)
 
 /* 
@@ -438,7 +438,7 @@ A(2);
 */
 /* 
     <div id="btnBox">
-        <input type="button" vaTue="button_1" />
+        <input type="button" value="button_1" />
         <input type="button" value="button_2" />
         <input type="button" value="button_3" />
         <input type="button" value="button_4" />
@@ -461,5 +461,103 @@ A(2);
 
 /* 
 2、document.parentNode 和 document.parentnode 的区别? (腾讯)
-
+3、你理解的闭包作用是什么,优缺点? 
+4、简述 let 和 var 的区别。
 */
+
+/* 
+4、简述 let 和 var 的区别。
+
+let VS var
+    1. 1et没有变量提升(但是在词法解析阶段也得知某个变量是否是私有变量)
+    2. let不允许在相同的作用域下重复声明
+    3. let解决了JS中的暂时性死区问题
+    4.let创建的全局变量没有给window设置对应的属性
+    5.1et会产生块级作用域
+    ...
+*/
+
+
+
+
+
+
+// Day 4
+// 1.写出下面代码输出结果
+var num = 10;
+var obj = {
+    num: 20
+};
+obj.fn = (function (num) {
+    this.num = num * 3;
+    num++;
+    return function (n) {
+        this.num += n;
+        num++;
+        console.log(num);
+    }
+})(obj.num);
+var fn = obj.fn;
+fn(5);
+obj.fn(10);
+console.log(num, obj.num);
+
+
+// 2.写出下面代码输出结果
+var fullName = 'language';
+var obj = {
+    fullName: 'javascript',
+    prop: {
+        getFullName: function () {
+            return this.fullName;
+        }
+    }
+};
+console.log(obj.prop.getFullName()); // 'undefined'
+var test = obj.prop.getFullName;
+console.log(test()); // 'language'
+
+// 3.写出下面代码输出结果
+var name = 'window';
+var Tom = {
+    name: "Tom",
+    show: function () {
+        console.log(this.name); // this:window
+    },
+    wait: function () {
+        var fun = this.show;
+        fun();
+    }
+};
+Tom.wait(); // 'window'
+
+
+/**
+ * 掌握几条分清执行的主体的规律
+ *  1.给元素的某个事件绑定方法，当事件触发方法执行的时候，方法中的THIS是当前操作的元素
+ *  2.方法执行，看方法前面是否有点，有点，点前面是谁THIS就是谁，没有点THIS是WINDOW (在严格模式下没有点THIS是UNDEFINED =>"use strict")
+ *  3.在构造函数模式执行中，函数体中的THIS是当前类的实例
+ */
+
+// // 1
+// document.body.onclick = function () {
+//     //this: body
+// }
+
+// // 2
+// function fn() {
+//     console.log(this);
+// }
+// let obj = {
+//     fn: fn
+// };
+// fn(); // => this:window
+// obj.fn(); // => this:obj
+
+// // 3
+// function Fn() {
+//     // this:f这个实例
+//     this.name = 'XXX';
+// }
+// let f = new Fn();
+// console.log(f.name);

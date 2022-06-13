@@ -2,7 +2,7 @@
  * @Author: LLW
  * @Date: 2022-06-13 08:56:52
  * @LastEditors: LLW
- * @LastEditTime: 2022-06-13 09:01:06
+ * @LastEditTime: 2022-06-13 10:05:26
  * @Description: 请填写简介
 -->
 <!DOCTYPE html>
@@ -10,13 +10,13 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>面试题</title>
+    <title>面试题_6-11</title>
     <script src="js/面试题_6-11.js"></script>
 </head>
 
 <body>
     <div id="btnBox">
-        <input type="button" vaTue="button_1" />
+        <input type="button" value="button_1" />
         <input type="button" value="button_2" />
         <input type="button" value="button_3" />
         <input type="button" value="button_4" />
@@ -27,11 +27,50 @@
         var btnBox = document.getElementById('btnBox'),
             inputs = btnBox.getElementsByTagName('input');
         var l = inputs.length;
+        /* 
+        // 方式一:自定义属性（推荐）
         for (var i = 0; i < l; i++) {
+            inputs[i].index = i;
             inputs[i].onclick = function () {
+                alert(this.index);
+            }
+        } */
+
+        // // 闭包(不推荐，性能差)
+        // for (var i = 0; i < l; i++) {
+        //     // // 闭包一：
+        //     // ~function (i) {
+        //     //     inputs[i].onclick = function () {
+        //     //         alert(i);
+        //     //     }
+        //     // }(i);
+
+        //     // 闭包二：
+        //     inputs[i].onclick = function(i){
+        //         return function(){
+        //             alert(i);
+        //         }
+        //     }(i);
+        // }
+
+        /* 
+        // let 的方法和闭包的方法原理类似，都是每一轮循环产生一个私有的作用域(let块作用域)，保存住当前循环i的值，供后期调取使用
+        for (let i = 0; i < buttons.length; i++) {
+            let item = buttons[i];
+            item.onclick = function () {
                 alert(i);
             }
-        }
+        } */
+
+
+        // 数组方式
+        [].forEach.call(inputs, (item, index) => {
+            item.onclick = function () {
+                alert(index);
+            }
+        });
+
+
     </script>
 </body>
 
