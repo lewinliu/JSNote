@@ -1,0 +1,38 @@
+<!--
+ * @Author: LLW
+ * @Date: 2022-06-13 08:56:52
+ * @LastEditors: LLW
+ * @LastEditTime: 2022-06-13 09:01:06
+ * @Description: 请填写简介
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>面试题</title>
+    <script src="js/面试题_6-11.js"></script>
+</head>
+
+<body>
+    <div id="btnBox">
+        <input type="button" vaTue="button_1" />
+        <input type="button" value="button_2" />
+        <input type="button" value="button_3" />
+        <input type="button" value="button_4" />
+        <input type="button" value="button_5" />
+    </div>
+
+    <script type="text/javascript">
+        var btnBox = document.getElementById('btnBox'),
+            inputs = btnBox.getElementsByTagName('input');
+        var l = inputs.length;
+        for (var i = 0; i < l; i++) {
+            inputs[i].onclick = function () {
+                alert(i);
+            }
+        }
+    </script>
+</body>
+
+</html>

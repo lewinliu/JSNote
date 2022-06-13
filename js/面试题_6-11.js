@@ -2,7 +2,7 @@
  * @Author: LLW
  * @Date: 2022-06-11 15:21:03
  * @LastEditors: LLW
- * @LastEditTime: 2022-06-12 16:52:34
+ * @LastEditTime: 2022-06-13 09:02:14
  * @Description: 练习题
  *          
  * 建议大家每一道题都要画图 (尤其是复杂一些的题目)， 画图过程能让我们把基础知识掌握的更加扎实,而且更加有效的算出正确的答案
@@ -412,15 +412,54 @@
 
 // 7.
 var a = 0,
-b = 0;
+    b = 0;
 
 function A(a) {
+    // 改变了全局变量function A 的值；
     A = function (b) {
         alert(a + b++);
     };
     alert(a++);
 }
+A(1);
+// alert(1); a=2;
+A(2);
+// alert(4);
+
+
+ 
+// 三:附加思考题(面试题)
+
+/* 
+1、以下代码的功能是要实现为5个 input 按钮循环绑定 click 点击事件,绑定完成后点击 1、2、3、4、5 五个按钮分别会alert输出 0、1、 2、 3、 4 五个字符。( 腾讯)
+    请问如下代码是否能实现?
+    如果不能实现那么现在的效果是什么样的?
+    应该做怎样的修改才能达到我们想要的效果,并说明原理? 
+*/
+/* 
+    <div id="btnBox">
+        <input type="button" vaTue="button_1" />
+        <input type="button" value="button_2" />
+        <input type="button" value="button_3" />
+        <input type="button" value="button_4" />
+        <input type="button" value="button_5" />
+    </div>
+
+    <script type="text/javascript">
+        var btnBox = document.getElementById('btnBox'),
+            inputs = btnBox.getElementsByTagName('input');
+        var l = inputs.length;
+        for (var i = 0; i < l; i++) {
+            inputs[i].onclick = function () {
+                alert(i);
+            }
+        }
+    </script>
+*/
 
 
 
+/* 
+2、document.parentNode 和 document.parentnode 的区别? (腾讯)
 
+*/
