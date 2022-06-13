@@ -2,7 +2,7 @@
  * @Author: LLW
  * @Date: 2022-06-11 15:21:03
  * @LastEditors: LLW
- * @LastEditTime: 2022-06-13 10:45:12
+ * @LastEditTime: 2022-06-13 16:37:51
  * @Description: 练习题
  *          
  * 建议大家每一道题都要画图 (尤其是复杂一些的题目)， 画图过程能让我们把基础知识掌握的更加扎实,而且更加有效的算出正确的答案
@@ -482,8 +482,8 @@ let VS var
 
 
 
-// Day 4
-// 1.写出下面代码输出结果
+// // Day 4
+// // 1.写出下面代码输出结果
 var num = 10;
 var obj = {
     num: 20
@@ -502,34 +502,92 @@ fn(5);
 obj.fn(10);
 console.log(num, obj.num);
 
-
-// 2.写出下面代码输出结果
-var fullName = 'language';
-var obj = {
-    fullName: 'javascript',
-    prop: {
-        getFullName: function () {
-            return this.fullName;
-        }
-    }
+// ------解题过程------
+/*
+// 变量提升  
+var num;
+var obj;
+var fn;
+// 代码执行
+num = 10;
+obj = {
+    num: 20
 };
-console.log(obj.prop.getFullName()); // 'undefined'
-var test = obj.prop.getFullName;
-console.log(test()); // 'language'
 
-// 3.写出下面代码输出结果
-var name = 'window';
-var Tom = {
-    name: "Tom",
-    show: function () {
-        console.log(this.name); // this:window
-    },
-    wait: function () {
-        var fun = this.show;
-        fun();
-    }
-};
-Tom.wait(); // 'window'
+obj.fn, 在obj对象中添加属性 fn；
+obj.fn = (function (num) {...})(obj.num);
+obj.fn = (function (num) {...})(20);
+开启私有作用域 A
+this.num = num * 3;
+    => window.num = num(形参) * 3;
+    => window.num = 20 * 3 = 60;
+num(形参)++; 
+    => 20+1 = 21;
+obj.fn = return的引用地址 af0; => 'function (n) {...}'
+    // obj = {
+    //     num: 20,
+    //     fn:af0,
+    // };
+    // window.num = 60;
+
+fn = obj.fn; => fn = af0;
+
+fn(5); => window.fn(5) => function (5) {...}
+this.num += n; => window.num = 60+5; => window.num = 65;
+    // obj = {
+    //     num: 20,
+    //     fn:af0,
+    // };
+    // window.num = 65;
+num(形参)++; 
+    => 21+1 = 22;
+console.log(num(形参)); => '22'
+
+obj.fn(10); => function (10) {...}
+this.num += n; => obj.num = 20+10; => obj.num = 30;
+    // obj = {
+    //     num: 30,
+    //     fn:af0,
+    // };
+    // window.num = 65;
+num(形参)++; 
+    => 22+1 = 23;
+console.log(num(形参)); => '23'
+
+console.log(num, obj.num); // '65' '30'
+
+输出结果：'22' '23' '65' '30'
+
+*/
+
+
+// // 2.写出下面代码输出结果
+// var fullName = 'language';
+// var obj = {
+//     fullName: 'javascript',
+//     prop: {
+//         getFullName: function () {
+//             return this.fullName;
+//         }
+//     }
+// };
+// console.log(obj.prop.getFullName()); // 'undefined'
+// var test = obj.prop.getFullName;
+// console.log(test()); // 'language'
+
+// // 3.写出下面代码输出结果
+// var name = 'window';
+// var Tom = {
+//     name: "Tom",
+//     show: function () {
+//         console.log(this.name); // this:window
+//     },
+//     wait: function () {
+//         var fun = this.show;
+//         fun();
+//     }
+// };
+// Tom.wait(); // 'window'
 
 
 /**
@@ -561,3 +619,117 @@ Tom.wait(); // 'window'
 // }
 // let f = new Fn();
 // console.log(f.name);
+
+
+
+
+// // 4. prototype 
+// function fun() {
+//     this.a = 0;
+//     this.b = function () {
+//         alert(this.a);
+//     }
+// }
+// fun.prototype = {
+//     b: function () {
+//         this.a = 20;
+//         alert(this.a);
+//     },
+//     c: function () {
+//         this.a = 30;
+//         alert(this.a);
+//     }
+// }
+
+// var my_fun = new fun();
+// my_fun.b();
+// my_fun.c();
+
+
+
+// 5.怎么规避多人开发函数重名的问题? (百度搜索)
+
+
+
+// // 6.360面试题
+// window.val = 1;
+// var json = {
+//     val: 10,
+//     dbl: function () {
+//         this.val *= 2;
+//     }
+// }
+// json.dbl();
+// var dbl = json.dbl;
+// dbl();
+// json.dbl.call(window);
+// alert(window.val + json.val);
+// // --------------------- 
+// // 变量提升
+// // var json;
+// // var dbl;
+
+// // 代码执行
+// // window.val = 1;
+
+// // json = {
+// //     val: 10,
+// //     dbl: function () {
+// //         this.val *= 2;
+// //     }
+// // }
+
+// // json.dbl();
+// //     this.val *= 2; => json.val => 20;
+
+// // dbl = json.dbl;
+// //     this.val *= 2; 
+// //     => window.val *= 2; 
+// //     => 2;
+
+// // json.dbl.call(window);
+// //     call()改变了this；
+// //     this:window; 
+// //     window.val *= 2; 
+// //     => 4;
+
+// // alert(window.val + json.val);
+// //     => 4+20
+// //     => 24
+
+
+
+// // 7.
+// (function () {
+//     var val = 1;
+//     var json = {
+//         val: 10,
+//         dbl: function () {
+//             val *= 2;
+//         }
+//     };
+//     json.dbl();
+//     alert(json.val + val);
+// })();
+// // -----------------------
+// // 变量提升
+// // var val;
+// // var json;
+
+// // // 代码执行
+// // val = 1;
+
+// // json = {
+// //     val: 10,
+// //     dbl: function () {
+// //         val *= 2;
+// //     }
+// // };
+
+// // json.dbl();
+// //     val *= 2;
+// //     => window.val *= 2;
+// //     => 2;
+
+// // alert(json.val + val); 
+// //     => 10+2=12
