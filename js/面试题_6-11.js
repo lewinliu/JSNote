@@ -2,7 +2,7 @@
  * @Author: LLW
  * @Date: 2022-06-11 15:21:03
  * @LastEditors: LLW
- * @LastEditTime: 2022-06-13 16:37:51
+ * @LastEditTime: 2022-06-14 08:40:14
  * @Description: 练习题
  *          
  * 建议大家每一道题都要画图 (尤其是复杂一些的题目)， 画图过程能让我们把基础知识掌握的更加扎实,而且更加有效的算出正确的答案
@@ -484,23 +484,23 @@ let VS var
 
 // // Day 4
 // // 1.写出下面代码输出结果
-var num = 10;
-var obj = {
-    num: 20
-};
-obj.fn = (function (num) {
-    this.num = num * 3;
-    num++;
-    return function (n) {
-        this.num += n;
-        num++;
-        console.log(num);
-    }
-})(obj.num);
-var fn = obj.fn;
-fn(5);
-obj.fn(10);
-console.log(num, obj.num);
+// var num = 10;
+// var obj = {
+//     num: 20
+// };
+// obj.fn = (function (num) {
+//     this.num = num * 3;
+//     num++;
+//     return function (n) {
+//         this.num += n;
+//         num++;
+//         console.log(num);
+//     }
+// })(obj.num);
+// var fn = obj.fn;
+// fn(5);
+// obj.fn(10);
+// console.log(num, obj.num);
 
 // ------解题过程------
 /*
