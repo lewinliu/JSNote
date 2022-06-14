@@ -1,3 +1,7 @@
+<a name="IftMd"></a>
+## 
+<a name="bKbqL"></a>
+## 前言
 <a name="d8c924d5"></a>
 ### sh常用的浏览器
 
@@ -31,8 +35,8 @@
 - DOM ( document object model): 文档对象模型，提供一些 JS 的<br />属性和方法，用来操作页面中的 DOM 元素
 - BOM (browser object model) ：浏览器对象模型，提供一些 JS 的<br />属性和方法，用来操作浏览器的
 
-<a name="7ea192a4"></a>
-### JS 中的变量 variable
+<a name="sJeGM"></a>
+## JS 中的变量 variable
 
 > 变量:可变的量，在编程语言中，变量其实就是一一个名字，用来存储和代表不同值的东西
 
@@ -62,10 +66,11 @@ let m=Symbol(100);
 // n==m  --> false
 ```
 
-<a name="f879b813"></a>
-### JS 中的命名规范
+<a name="T7J68"></a>
+## JS 中的命名规范
 
--  **严格区分大小写 **
+<a name="W5VfX"></a>
+###  严格区分大小写： 
 ```javascript
 let Test=100;
 console. log(test);// =>无法输出，因为第一个字母小写了
@@ -76,8 +81,10 @@ let .box; // =>一般公共变量都是_开头
 let 1box; // =>不可以，但是可以写box1
 ```
  
+<a name="IetYs"></a>
+###  使用驼峰命名法:
+> **首字母小写，其余每一个有意义单词的首字母都要大写(命名尽可能语义化明显，使用英文单词) **
 
--  **使用驼峰命名法:首字母小写，其余每一个有意义单词的首字母都要大写(命名尽可能语义化明显，使用英文单词) **
 ```javascript
 let student Information;
 let studentInfo;
@@ -89,8 +96,8 @@ let xueshengxinxi;
 let xsxx;
 ```
  
-
--  **不能使用关键字和保留字 **
+<a name="JB14p"></a>
+###  不能使用关键字和保留字 
 ```javascript
 // 当下有特殊含义的是关键字，未来可能会成为关键字的叫做保留字(? )
 
@@ -102,8 +109,8 @@ var var10 = 10; // =>语法没问题，但是不规范
 ```
  
 
-<a name="d7c3bb65"></a>
-### JS 中常用的数据类型
+<a name="vdb55"></a>
+## JS 中常用的数据类型
 
 > 在 JavaScript 中，共有七种基本数据类型：string、number、bigint、boolean、null、undefined、symbol。
 
@@ -131,14 +138,14 @@ var var10 = 10; // =>语法没问题，但是不规范
       - function
 - <br />
 
-<a name="22dd1068"></a>
-## number 数字类型
+<a name="fcA9f"></a>
+### number 数字类型
 
 > 包含:常规数字、NaN
 
 
-<a name="NaN"></a>
-### NaN
+<a name="dEaU6"></a>
+#### NaN
 
 > not a number: 不是一个数，但它属于数字类型
 
@@ -149,8 +156,8 @@ NaN!=NaN	// true
 // 所以我们不能用相等的方式判断是否为有效数字
 ```
 
-<a name="isNaN"></a>
-### isNaN
+<a name="GYpZi"></a>
+#### isNaN
 
 > 检测一个值是否为非有效数字，如果不是有效数字返回 TRUE，反之是有效数字返回 FALSE
 
@@ -160,8 +167,8 @@ NaN!=NaN	// true
 isNaN(Number('123')) // true
 ```
 
-<a name="20c70a85"></a>
-### Number
+<a name="VWrYu"></a>
+#### Number
 
 > 把字符串转换为数字，只要字符串中包含任意一个非有效数字字符(第一个点除外)结果都是 NaN,空字符串会变为数字零
 
@@ -175,27 +182,27 @@ console.log(Number('')); //0
 
 - 在使用 isNaN 进行检测的时候，首先会验证检测的值是否为数字类型，如果不是，先基于 Number()这个方法，把值转换为数字类型，然后再检测
 
-<a name="16ca7ebe"></a>
-### 把其它类型值转换为数字类型
+<a name="cWwNJ"></a>
+#### 把其它类型值转换为数字类型
 
 - Number([val])
 - parseInt/parseFloat([va1], [进制]): 也是转换为数字的方法，对于字符串来说，**它是从左到右依次查找有效数字字符，直到遇到非有效数字字符，停止查找**(不管后面是否还有数字，都不在找了)，**把找到的当做数字返回**
 - ==进行转化的时候，可能出现把其他类型值转换为数字
 
-<a name="9f7ea7a4"></a>
+<a name="jDpqn"></a>
 ### 把其它类型值转换为字符串
 
 - [val].toString()
 - 字符串拼接，如：123+"456" // "123456"
 
-<a name="2f594743"></a>
-## boolean 布尔数据类型
+<a name="r0VBt"></a>
+### boolean 布尔数据类型
 
 > 只有两个值 true/false
 
 
-<a name="849a1309"></a>
-### 把其它类型值转换为布尔类型
+<a name="YDEBm"></a>
+#### 把其它类型值转换为布尔类型
 
 > 只有 0、NaN、""、null、undefined 五个值转换为 false， 其余都转换为 true。(而且没有任何的特殊情况)
 
@@ -220,8 +227,8 @@ console.log(a);
 ```
 
 
-<a name="23b6a475"></a>
-## null / undefined
+<a name="kRkK1"></a>
+### null / undefined
 
 > null 和 undefined 都代表的是没有
 
@@ -240,8 +247,8 @@ let num; //=> 创建一个变量没有赋值，默认值是undefined
 num = 12;
 ```
 
-<a name="aa63b1ed"></a>
-## object 对象数据类型-普通对象
+<a name="wsulA"></a>
+### object 对象数据类型-普通对象
 
 > { [key] : [value] , ... } 任何一个对象都是由零到多组键值对(属性名:属性值)组成的(并且属性名不能重复)
 
@@ -322,7 +329,7 @@ a.X = b;
 ```
  
 
-<a name="fe8d9dfc"></a>
+<a name="QVfgf"></a>
 ### JS 中的数据类型检测
 
 - ** typeof [val]**：用来检测数据类型的运算符 
@@ -348,19 +355,49 @@ typeof /^/ //=> 'object'
 ```
  
 
--  instanceof：用来检测当前实例是否率属于某个类 
+-  **instanceof**：用来检测当前实例是否率属于某个类 
+```javascript
+/**
+    instanceof:用来检测某个实例是否属于这个类
+        实例instanceof类，属于返回TRUE，不属于返回FALSE
+
+    [局限性]
+        1.要求检测的实例必须是对象数据类型的，基本数据类型的实例是无法基于它检测出来的
+
+ */
+console.log(person1 instanceof CreatePerson); // => TRUE 
+let ary = [12, 23];
+console.log(ary instanceof Array); // => TRUE
+console.log(ary instanceof RegExp); // => TRUE
+console.log(ary instanceof Object); // => TRUE
+console.log(1 instanceof Number); // => FALSE
+
+/*
+    基本数据类型在JS中的特殊性
+        1.一定是自己所属类的实例
+        2.但是不一定是对象数据类型的
+*/
+//字面量创建方式(也是Number类的实例，也可以调取内置的公有方法)
+let n = 10;
+console.log(n.toFixed(2));
+console.log(typeof n); // => "number"
+
+//构造函数创建模式(创建出来的实例是对象类型的)
+let m = new Number("10");
+console.log(typeof m); // => "object" 
+console.log(1 instanceof Number); // => FALSE
+```
+ 
+
+-  **constructor**：基于构造函数检测数据类型( 也是基于类的方式) 
 
  
 
--  constructor：基于构造函数检测数据类型( 也是基于类的方式) 
+-  **object.prototype.toString.call()**：**检测数据类型最好的办法 **
 
  
 
--  object . prototype. toString.call()：检测数据类型最好的办法 
-
- 
-
-<a name="c59c4def"></a>
+<a name="q1hw8"></a>
 ### JS中的数学运算
 
 > **i++**和以下两种不完全一样， 他是**纯粹的数学运算**
@@ -627,6 +664,41 @@ sum(1, 2, 3, 4);
 
 > 箭头函数中的this某些场景也是方便我们操作的
 
+<a name="ZNppm"></a>
+### 自执行函数
+```javascript
+// 可以直接执行
+! function (param) {
+	// 函数主体
+	console.log(param); // 0
+}(0);
+
+~ function (param) {
+	// 函数主体
+	console.log(param); // 1
+}(1);
+
+- function (param) {
+	// 函数主体
+	console.log(param); // 2
+}(2);
+
++ function (param) {
+	// 函数主体
+	console.log(param); // 3
+}(3);
+
+- function (param) {
+	// 函数主体
+	console.log(param); // 4
+}(4);
+        
+
+
+// 注意
+!function() {return 1}() // false
+~function() {return 1}() // -2
+```
 
 <a name="Math"></a>
 ## Math
@@ -2203,7 +2275,833 @@ nodeValue : null
 </script>
 ```
 
-1<br />2<br />3<br />4
+<a name="wz44O"></a>
+## 变量提升机制&作用域
+> 当浏览器开辟出供代码执行的栈内存后，代码并没有自上而下立即执行，而是继续做了一些事情：
+> 把当前作用域中所有带 var/function 关键字的进行提前的声明和定义 => 变量提升机制
+>    - 带var的只是提前声明( declare ) "var a;" ，如果只声明没有赋值，默认值是 undefined
+>    - 带 function 的不仅声明，而且还定义了(defined)“a=13”定义其实就是赋值，准确来说就是让变量和某个值进行关联
+> 
+
+![image.png](https://cdn.nlark.com/yuque/0/2022/png/29066467/1654669570110-70ce58da-1587-4500-ae48-ac0945487418.png#clientId=uadfc173f-a79f-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=507&id=ue1ff17aa&margin=%5Bobject%20Object%5D&name=image.png&originHeight=634&originWidth=1594&originalType=binary&ratio=1&rotation=0&showTitle=false&size=682903&status=done&style=none&taskId=u16d844cb-086b-410d-9701-882acca98c0&title=&width=1275.2)
+```shell
+console.log(a); // => undefined
+var a = 12;
+console.log(a); // => 12
+
+// function 方式会声明并且赋值，可以在函数创建代码之前使用
+console.log(sum(10, 20));
+
+function sum(n, m) {
+    return n + m;
+}
+
+
+// 函数表达式方式，由于使用VAR来创建SUM，变量提升阶段只会声明变量，不会赋值，所以此时函数在前面执行，函数是没有值的，不能执行(真实项目中这种方式最常用，因它操作严谨)
+console.log(sum2); // => undefined
+sum2(10, 20); // => Uncaught TypeError: sum is not a function
+var sum2 = function (n, m) {
+    return n + m;
+};
+// let sum=(n, m)=>n+m;
+console.og(sum2(10, 20));
+
+```
+<a name="m8Qyw"></a>
+### 带var和不带var的区别
+```javascript
+/*
+// 带var和不带var的区别
+// =>在全局作用域下的区别
+
+不带var的:相当于在全局对象window设置了一个属性d
+window.d = 13;
+*/
+d = 128;
+console.log(d); // =>window.d
+
+/* 
+栈内存变量存储空间
+
+带var的:
+是在全局作用域下声明了一个变量b (全局变量)，但是在全局下声明的变量也同样相当于给window增加了一个对应的属性(只有全局作用域具备这个特点)
+*/
+var d = 256;
+console.log(d); // var d
+```
+<a name="jRodR"></a>
+### let/const和var的区别
+<a name="ocwok"></a>
+#### 1.let和const不存在变量提升机制；
+> 创建变量的六种方式中：var/function**有变量提升**，而let/const/class/import都**不存在这个机制**；
+
+```javascript
+/*
+全局作用域(栈内存)
+1.变量提升
+2.代码执行
+*/
+console.log(c); // let声明的变量不存在 变量提升
+// => Uncaught ReferenceError: Cannot access 'c' before initialization
+// JS中上一行代码报错，下面代码就不会执行了
+let c = 12;
+c = 13;
+console.log(c);
+```
+<a name="n9yEw"></a>
+#### 2.var允许重复声明，而let是不允许的
+> 在相同的作用域中(或执行上下文中) ：
+> - 如果使用var/function关键词声明变量并且重复声明，是不会有影响的(声明第一次之后，之后再遇到就不再重复声明了)
+> - 但是使用let/const就不行，浏览器会校验当前作用域中是否已经存在这个变量了，如果已经存在了，则再次基于let等重新声明就会报错
+
+```javascript
+var a=12;
+var a=13;
+console.log(a); // => 13
+
+
+// => 在浏览器开辟栈内存供代码自上而下执行之前，不仅有变量提升的操作，还有很多其它的操作 
+// => “词法解析”或者“词法检测”：就是检测当前即将要执行的代码是否会出现“语法错误： Uncaught SyntaxError ”，如果出现错误，代码将不会再执行(第一行都不会执行)
+console.log(1); // 这行代码都不会执行
+let a = 12;
+console.log(a);
+let a = 13; // 检测到这行报错： Uncaught SyntaxError: Identifier 'a' hasalready been declared
+console.log(a);
+
+// 引用错误
+console.log(1); // 这行会执行
+console.log(b); // => Uncaught ReferenceError: Cannot access 'b' before initialization
+let b=12;
+
+```
+```javascript
+//=>所谓重复是:不管之前通过什么办法，只要当前栈内存中存在了这个变量，我们使用let/const等重复再声明这个变量就是语法错误
+console.log(a); // 不执行
+var a = 12;
+let a = 13; // => Uncaught SyntaxError: Identifier 'a' has already been declared
+console.log(a);
+```
+<a name="HdK0a"></a>
+#### 3.变量提升&重复声明
+```javascript
+fn(); // 5
+
+function fn() {
+    console.log(1);
+}
+fn(); // 5
+
+function fn() {
+    console.log(2);
+}
+fn(); // 5
+var fn = function () {
+    console.log(3);
+}
+fn(); // 3
+
+function fn() {
+    console.log(4);
+}
+fn(); // 3
+
+function fn() {
+    console.log(5);
+}
+fn(); // 3
+
+// 输出结果：5 5 5 3 3 3
+```
+![变量提升&重复声明.png](https://cdn.nlark.com/yuque/0/2022/png/29066467/1654678291292-5d845c2e-dc18-414b-ac62-7fba8f273278.png#clientId=u646d321f-cce8-4&crop=0&crop=0&crop=1&crop=1&from=drop&id=ufc4fc147&margin=%5Bobject%20Object%5D&name=%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87%26%E9%87%8D%E5%A4%8D%E5%A3%B0%E6%98%8E.png&originHeight=630&originWidth=1594&originalType=binary&ratio=1&rotation=0&showTitle=false&size=570933&status=done&style=none&taskId=u5e4886f8-576e-481e-821a-6e79e700ae6&title=)
+<a name="cyYxV"></a>
+#### 4.关于 变量提升 & 条件判断
+```javascript
+/* 
+流程：
+    1.先进行变量提升，声明变量：var a;
+    2.只有function声明变量才会在变量提升阶段赋值;
+    3.if ('a' in window) 条件成立，变量 a 才会进行赋值操作;
+*/
+console.log(a); // undefined
+console.log('a in window:' + ('a' in window)); // true
+console.log('b in window:' + ('b' in window)); // false
+if ('a' in window) {
+    var a = 1; // 变量提升，只声明，未赋值
+}
+console.log(a); // undefin
+
+
+/* 
+全局作用域
+    1.变量提升
+        但是做函数的有特殊性:在老版本浏览器中，确实不论条件是否成立，函数也是提前声明或者定义的，但是新版本浏览器中，为了兼容ES6严谨的语法规范，条件中的函数变量提升阶段只能提前声明，不能提前定义
+    2. 代码执行
+        
+*/
+fn(); // => Uncaught TypeError: fn is not a function
+if ('fn' in window) {
+    //条件成立，进来后的第一件事是给fn赋值，然后在代码执行
+    fn(); // '哈哈哈'
+    function fn() {// 变量提升：function fn; // 只是声明变量，不赋值
+        console.log('哈哈哈');
+    }
+}
+fn(); // '哈哈哈'
+
+
+
+//=> 自执行函数:前面加的()或者!、-、~、+只有一个目的，让语法符合而已
+//=>自执行函数本身不进行变量提升(没名字)
+(function(n){})(10);
+~function(n){}(10);
+-function(n){}(10);
+!function(n){}(10);
++function(n){}(10);
+
+
+
+/*
+全局作用域
+    1.变量提升：
+        无，全局作用域下的函数没有名字，不进行变量提升；
+    2.代码执行；
+*/
+f = function () {
+    return true;
+}
+g = function () {
+        return false;
+    }
+
+~function () {
+    /* 
+    函数执行会形成一个私有作用域
+        1.变量提升：
+            function g;
+        2.代码执行；
+    */
+    console.log('typeof g :' + typeof g); // typeof g :undefined
+    console.log('typeof f :' + typeof f + ', f='+f()); // typeof f :function, f=true
+    if (g() && [] == ![]) { // Uncaught TypeError: g is not a function
+        f = function () {
+            return false;
+        }
+
+        function g() {
+            return true;
+        }
+    }
+}();
+
+console.log(f());
+console.log(g());
+
+```
+<a name="VlY68"></a>
+#### 5.let 能解决 typeof 检测时出现的暂时性死区问题(let 比 var 更严谨)
+```javascript
+
+// let 能解决 typeof 检测时出现的暂时性死区问题(let 比 var 更严谨)
+// http://es6.ruanyifeng.com/#docs/let
+
+// console.log(a); // 未声明，直接使用，报错；
+// => Uncaught ReferenceError: a is not defined
+
+// console.log(typeof a);  // (typeof a)却能够使用
+// => "undefined"，这是浏览器的BUG，本应该是报错的，因为没有a（暂时性死区）
+
+
+console.log(typeof a); // 用 let 声明变量可以避免
+// => Uncaught ReferenceError: Cannot access 'a' before initialization
+let a;
+
+```
+<a name="oPAgW"></a>
+### 章末习题
+> 下面代码分别输出什么？
+
+<a name="U9kN5"></a>
+#### 题目一：变量提升&作用域
+```javascript
+console.log(a, b);
+var a = 12,
+    b = 12;
+
+function fn() {
+    console.log(a, b);
+    var a = b = 13;
+    console.log(a, b);
+}
+fn();
+console.log(a, b);
+```
+![作用域.png](https://cdn.nlark.com/yuque/0/2022/png/29066467/1654766364813-1cdb2784-3499-4595-a3cc-6cf94795206f.png#clientId=u4cf38769-08de-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=497&id=u2ed20e88&margin=%5Bobject%20Object%5D&name=%E4%BD%9C%E7%94%A8%E5%9F%9F.png&originHeight=621&originWidth=1785&originalType=binary&ratio=1&rotation=0&showTitle=false&size=833652&status=done&style=none&taskId=u0480d7c8-da70-44ff-8d2f-18034f08827&title=&width=1428)
+<a name="LFzpm"></a>
+#### 题目二：变量提升&形参作用域
+```javascript
+console.log(a, b, c); 
+// undefined ， undefined ， undefined
+var a = 12,
+    b = 13,
+    c = 14;
+
+function fn(a) {
+    console.log(a, b, c); // 
+    a = 100;
+    c = 200;
+    console.log(a, b, c); // 
+}
+b = fn(10); // 无返回值默认返回undefined
+// 10 ， 13 ， 14
+// 100 ， 13 ， 200
+// b=undefined
+console.log(a, b, c); 
+// 12 ， undefined ， 200
+```
+![image.png](https://cdn.nlark.com/yuque/0/2022/png/29066467/1654820995727-9c9ad4c6-8f91-426b-b459-e912a64b4d84.png#clientId=u4cf38769-08de-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=496&id=u207477ba&margin=%5Bobject%20Object%5D&name=image.png&originHeight=620&originWidth=1598&originalType=binary&ratio=1&rotation=0&showTitle=false&size=717102&status=done&style=none&taskId=u99c65921-bf7a-4121-a3c1-e4137d40beb&title=&width=1278.4)
+<a name="PY6zZ"></a>
+#### 题目三：堆&形参作用域
+```javascript
+var ary = [12, 23]; // 
+
+function fn(ary) {
+    console.log(ary); // [12, 23]
+    ary[0] = 100; // [100, 23]
+    ary = [100]; // 创造了一个新的堆内存
+    ary[0] = 0; // 现在改变的是新的堆内存中的值
+    console.log(ary); // [0]
+}
+fn(ary); 
+// 将数组的堆地址传递给fn，所以fn中改变的是该地址指向的堆内存中的值
+console.log(ary); // [100, 23]
+```
+<a name="Rq62f"></a>
+#### 题目四：如何查找上级作用域和堆栈内存释放问题
+```javascript
+// 题目四：写出下面代码输出的结果(如何查找上级作用域和堆栈内存释放问题)
+var n = 1;
+
+function fn() {
+    var n = 2;
+
+    function f() {
+        n--; // fn() => n--
+        console.log(n);
+    }
+    f();
+    return f; // 
+}
+var x = fn(); // fn() => n=1
+x(); // fn() => n=0
+console.log(n); // 1
+```
+![image.png](https://cdn.nlark.com/yuque/0/2022/png/29066467/1654825241515-e19859f1-5fa1-4384-9f1d-727fde71c2e1.png#clientId=u4cf38769-08de-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=633&id=ub7bc6d39&margin=%5Bobject%20Object%5D&name=image.png&originHeight=791&originWidth=1875&originalType=binary&ratio=1&rotation=0&showTitle=false&size=815378&status=done&style=none&taskId=u17fe67a0-2f03-48ab-9919-76a07046051&title=&width=1500)
+<a name="ulG3N"></a>
+#### 题目五：作用域问题
+```javascript
+// 题目五：
+var i = 0;
+
+function A() {
+    var i = 10;
+
+    function x() {
+        console.log(i);
+    }
+    return x;
+}
+var y = A();
+y(); // 10
+
+function B() {
+    var i = 20;
+    y();
+}
+B(); // 10
+```
+<a name="APdL9"></a>
+## 闭包作用域
+<a name="GWJDc"></a>
+### 1.创建函数
+
+   1. 开辟一个堆内存
+   1. 把函数体中的代码当做字符串存储进去
+   1. 把堆内存的地址赋值给函数名/变量名
+   1. **函数在哪创建,那么它执行时候所需要查找的.上级作用域就是谁**
+<a name="oq91i"></a>
+### 2.函数执行
+
+   1. 形成一个全新的私有作用域、执行上下文、私有栈内存(执行一次形成一个，多个之间也不会产生影响)
+   1. 形参赋值&变量提升
+   1. 代码执行(把所属堆内存中的代码字符串拿出来一行行执行)
+   1. 遇到一个变量，首先看它是否为私有变量(形参和在私有作用域中声明的变量是私有变量) , 是私有的就操作自己的变量即可,不是私有的则向上级作域中查找..一直找到全局作用域为止 => **作用域链查找机制**
+   1. 私有变量和外界的变量没有必然关系,可以理解为被私有栈内存保护起来了,这种机制其实就是**闭包的保护机制**
+<a name="A8qe8"></a>
+### 3.关于堆栈内存释放问题
+> 函数执行就会形成栈内存(从内存中分配的一块空间) , 如果内存都不销毁释放,很容易就会导致栈内存溢出(内存爆满,电脑就卡死了) , 堆栈内存的释放问题是学习JS的核心知识之一
+
+```javascript
+// => 创建-一个引用类型值，就会产生一个堆内存
+// 如果当前创建的堆内存不被其它东西所占用了(浏览器会在空闲的时候，查找每一个内存的引用状况，不被占用的都会给回收释放掉)， 则会释放
+let obj = {
+    name: 'zhufeng'
+};
+let oop = obj;
+// 此时obj和oop都占用着对象的堆内存，想要释放堆内存，需要手动解除变量和值的关联(null:空对象指针)
+obj = null;
+oop = null;
+```
+```javascript
+// =>打开浏览器形成的全局作用域是栈内存
+// =>手动执行函数形成的私有作用域是栈内存
+// =>基于ES6中的 let/const 形成的块作用域也是栈内存
+// =>....
+/*
+	全局栈内存:
+		关掉页面的时候才会销毁
+	私有栈内存:
+		1.一般情况下，函数只要执行完成，形成的私有栈内存就会被销毁释放掉（排除出现无限递归、死循环的模式）
+		2.但是一旦栈内存中的某个东西(一般都是堆地址)被私有作用域以外的事物给占用了，则当前栈内存不能被立即释放销毁（特点：私有作用域中的私有变量信息也保留下来了）		
+		=>市面上认为的闭包:函数执行形成不能被释放的私有栈内存，这样的才是闭包
+
+*/
+
+function fn() {
+    // ...
+}
+fn(); // =>函数执行形成栈内存，执行完成栈内存销毁
+
+
+function X() {
+    return function () {
+        // ...
+    }
+}
+let f = X(); // =>f占用了X执行形成的栈内存中的一个东西(返回小函数对应的堆)，则X执行形成的栈内存不能被释放了
+```
+<a name="UjKa3"></a>
+### 4.闭包的两个作用
+> 从**性能**角度讲，我们真实项目中应该**减少**对闭包的**使用**(因为闭包会产生不释放的栈内存，过多使用容易导致内存溢出或者降低性能)
+
+<a name="STYhv"></a>
+#### 保护
+> 1. jQuery (JQ )前端非常经典的类库：提供了大量的方法供开发人员使用
+>    - => 为了防止全局变量污染
+>    - 解释：导入JQ后，它里面有大量的方法，如果这些方法不保护起来，用户编写的方法很容易和JQ方法名字相同产生冲突，产生冲突可以理解为全局变量污染
+
+```javascript
+(function (global, factory) {
+    // ...
+    factory(global);
+})(window, function (window, noGlobal) {
+    // ...
+    var jQuery = function (selector, context) {
+        // ...
+        console.log('jQuery: ' + selector + ',' + context);
+    }
+    // => 通过给全局对象增加属性:jQuery和$，把私有的jQuery方法暴露到全局作用域下，供外面使用(等价于return jQuery) (外界需要使用函数中的私有内容，我们可以基于wi ndow. xxx和return xxx两种方式实现这个需求)
+    window.jQuery = window.$ = jQuery;
+});
+
+jQuery(1, 2);
+```
+> 在真实项目中，我们一般都要把自己写的内容放到一个闭包中，这样可以有效防止自己的代码和别人代码产生冲突(全局变量污染：真实项目中是要尽可能减少对全局变量的使用的) ；
+> 
+> 如果需要把自己的东西给别人用基于 return 和 window.xxx 等方式暴露给别人即可；
+
+```javascript
+// =>原生JS
+var xxx = (function () {
+    //.... A自己写的代码
+    return xxx;
+})();
+
+(function () {
+    //....B自己写的代码
+    window.xxx = xxx;
+})();
+
+//=>JQ 
+$(function () {
+    //...这样写在某些角度上也是为了减少全局变量
+});
+```
+<a name="dhybL"></a>
+#### 保存
+> 2.基于LET/CONST/CLASS等创建变量,会把所在的大括号(除对象的大括
+> 号之外)当做一个全新的私有块级作用域
+> - 函数执行会产生私有的栈内存(作用域/执行上下文)
+> - let等也会产生私有的块作用域( var不会)
+
+```javascript
+if (1 === 1) {
+	var a = 10;
+}
+console.log(a); // => 10
+// => a是全局作用域
+```
+```javascript
+if (1 === 1) {
+	// => let会有块作用域(现在大括号就是一个私有作用域)
+	// => a是私有变量
+	let a = 10;
+}
+console.log(a); // => uncaught ReferenceError: a is not defined
+```
+![image.png](https://cdn.nlark.com/yuque/0/2022/png/29066467/1654915538883-491217df-793a-44a4-ad13-22da870023db.png#clientId=u71519f6d-c9c5-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=364&id=uaf89c66d&margin=%5Bobject%20Object%5D&name=image.png&originHeight=455&originWidth=1502&originalType=binary&ratio=1&rotation=0&showTitle=false&size=262143&status=done&style=none&taskId=ue82d037b-3ade-424b-be3a-cfca90f9675&title=&width=1201.6)
+<a name="DGgzi"></a>
+### 5.章末小题
+<a name="vnjHM"></a>
+#### 第一题
+```javascript
+var i = 5;
+
+function fn(i) {
+    return function (n) {
+        console.log(n + (++i));
+    }
+}
+var f = fn(1);
+f(2);       // 4
+fn(3)(4);   // 8
+fn(5)(6);   // 12
+f(7);       // 10
+//f占用fn(1)开辟的私有作用域地址，fn未消毁i，再次++i=3；
+console.log(i); // 5
+```
+<a name="fn6mw"></a>
+#### 第二题
+```javascript
+var i = 20;
+
+function fn() {
+    i -= 2;
+    return function (n) {
+        console.log((++i) - n);
+    }
+}
+var f = fn();
+f(1); // 18
+f(2); // 18
+
+fn()(3); // 16
+fn()(4); // 14
+f(5); // 14
+console.log(i); // 19
+```
+<a name="NIskb"></a>
+### JS中的this的问题
+> 函数执行的主体(不是.上下文)：意思是谁把函数执行的，那么执行主体就是谁
+> 
+> THIS非常的不好理解，以后遇到THIS ，想一句话:“你以为你以为的就是你以为的”
+
+
+1. 给元素的某个事件绑定方法，当事件触发方法执行的时候，方法中的this是当前操作的元素本身；
+1. 如何确定执行主体(this)是谁？当方法执行时候，我们看方法前面是否有点'.'，没有点 this 是 window 或 undefined；有点，点前面是谁 this 就是谁；
+```javascript
+/*
+var name = 'hello,world!';
+
+function fn() {
+    console.log(this.name);
+}
+var obj = {
+    name: "你好,世界",
+    fn: fn
+};
+obj.fn(); // "你好,世界"
+// => this:obj
+fn(); // 'hello,world!'
+// => this:window (非严格模式，严格模式下是undefined) window.fn() 把 window.省略了 
+*/
+
+/* 
+(function () {
+    //自执行函数中的 this 是 window 或 undefined 
+})();
+ */
+
+// a.b.c.d() => d()的 this 是 a.b.c 
+
+/* 
+let obj = {
+    fn: (function (n) {
+        //把自执行函数执行的返回结果赋值给fn
+        //this :wi ndow
+        return function () {
+            //=>fn等于这个返回的小函数
+            //this:obj
+        };
+    })(10)
+};
+obj.fn();
+ */
+
+function fn() {
+    // this：window
+    // [object Window]
+    console.log('fn(): ' + this);
+}
+document.body.onmousemove = function () {
+    // this：document.body
+    // [object HTMLBodyElement]
+    console.log('document.body.onmousemove: ' + this);
+    fn();
+}
+```
+
+<a name="wK2ls"></a>
+## 面向对象
+> 标记语言：HTML5/CSS3
+> 编程语言：编程思想
+> - 面向过程C
+> - 面向对象JAVA、PHP、 C# ( ASP.NET )、JavaScript...
+
+<a name="ZMlbC"></a>
+### 单例设计模式
+```javascript
+// => 把描述当前事务特征的信息进行分组归类(减少全局变量的污染)
+// => 这就是JS中的单例设计模式
+/*
+beautiGirl 不仅仅被叫做变量(对象名)，也被称为“命名空间”
+
+单例模式:把描述事务的信息放到一个命名空间中进行归组，防止全局变量的污染
+*/
+let beautiGirl = {
+	name: '和冉',
+	age: 18
+};
+let o1dMan = {
+	name: '小璐璐',
+	age: 81
+};
+```
+为了让单例模式变的高大上一些, 真实项目中的单例模式都这样处理：
+```javascript
+let namespace = (function () {
+    //创建一些方法
+    let fn = function () {
+        //....
+    };
+    return {
+        name: XXX,
+        fn: fn
+    }
+})();
+namespace.name
+namespace.fn();
+```
+例如:完成一个需要团队协作开发的案例(百度首页)
+```javascript
+/*
+    公共模块
+*/
+let utils = (function () {
+    let queryElement = function () {
+        console.log('调用了 utils.queryElement();');
+    }
+    return {
+        //queryElement:queryElement
+        queryElement
+    }
+})();
+// utils.queryElement();
+
+/*
+    页面选项卡模块
+*/
+let pageTabModule = (function () {
+    //=>获取元素(调取其它命名空间下的方法) 
+    let tabBox = utils.queryElement('.tabBox');
+    let show = function () {
+        // ...
+    }
+    return {
+        init: function () {
+            //调用自己模块下的方法
+            show();
+        }
+    }
+})();
+// pageTabModule.init();
+
+// 其他模块...
+```
+
+<a name="GAKRm"></a>
+### 工厂模式
+> 批量化生产：把实现某个功能的代码进行封装，后期在想实现这个功能，我们直接执行函数即可
+> - 低耦合：减少页面中冗余的代码
+> - 高内聚：提高代码的重复使用率
+
+```javascript
+/**
+* 工场模式
+* 
+* 批量化生产：把实现某个功能的代码进行封装，后期在想实现这个功能，我们直接执行函数即可
+*  
+*  低耦合：减少页面中冗余的代码
+*  高内聚：提高代码的重复使用率
+*/
+function createPerson(name, age) {
+	let person = {};
+	person.name = name;
+	person.age = age;
+	return person;
+}
+let beautyGirl = createPerson('和冉', 18);
+let oldMan = createPerson('小璐璐', 81);
+beautyGirl.name;
+o1dMan.age
+```
+
+<a name="qAhEn"></a>
+### 构造原型模式(正统面向对象编程)
+> 自己能够创造出自定义类和对应实例，构建起一套完整的面向对象模型
+
+```javascript
+/*
+* @Author: LLW
+* @Date: 2022-06-14 09:44:04
+* @LastEditors: LLW
+* @LastEditTime: 2022-06-14 14:41:52
+* @Description: 请填写简介
+*/
+
+function CreatePerson(name, age) {
+	this.name = name;
+	this.age = age;
+	// return 100; //=>返 回的还是实例
+	// return {
+	//     XXX:'XXX'
+	// }; // => 如果手动RETURN的是一个基本值，对返回的实例无影响，如果手动RETURN的是一个引用类型的值，会把默认返回的实例给替换掉(所以在构造函数模式执行下，我们一般都不要手动写RETURN，防止把返回的实例给替换)
+}
+// CreatePerson('张三' ，25); // => this:window 普通函数执行
+let person1 = new CreatePerson('和冉', 18);
+console.log(person1);
+/*
+new CreatePerson()执行 和 普通函数执行 的联系
+1. new 这种执行方式叫做“ 构造函数执行模式”， 此时的CreatePerson不仅仅是一个函数名，被称为“类”，而返回的结果(赋值给person1的)是一个对象，我们称之为“实例”，而函数体中出现的this都是这个实例；
+*/
+
+
+/**
+instanceof:用来检测某个实例是否属于这个类
+实例instanceof类，属于返回TRUE，不属于返回FALSE
+
+[局限性]
+1.要求检测的实例必须是对象数据类型的，基本数据类型的实例是无法基于它检测出来的
+
+*/
+console.log(person1 instanceof CreatePerson); // => TRUE 
+let ary = [12, 23];
+console.log(ary instanceof Array); // => TRUE
+console.log(ary instanceof RegExp); // => TRUE
+console.log(ary instanceof Object); // => TRUE
+console.log(1 instanceof Number); // => FALSE
+
+/*
+基本数据类型在JS中的特殊性
+1.一定是自己所属类的实例
+2.但是不一定是对象数据类型的
+*/
+//字面量创建方式(也是Number类的实例，也可以调取内置的公有方法)
+let n = 10;
+console.log(n.toFixed(2));
+console.log(typeof n); // => "number"
+
+//构造函数创建模式(创建出来的实例是对象类型的)
+let m = new Number("10");
+console.log(typeof m); // => "object" 
+console.log(1 instanceof Number); // => FALSE
+
+
+
+
+
+// ===================================
+
+function Fn(n) {
+	let m = 10;
+	this.total = n + m;
+	this.say = function () {
+		console.log(this.total);
+	};
+}
+
+let f1 = new Fn(10); // window.total = 20
+let f2 = new Fn(20); // window.total = 30
+let f3 = new Fn;
+
+console.log(f1.m); // undefined
+console.log(f2.n); // undefined
+console.log(f1.total); // 20
+console.log(f2.say());
+// 30
+// undefined
+// 先输出30，再输出undefined，因为 f2.say() 没有返回值；
+console.log(f1 === f2); // false
+
+console.log(f3.total); // NaN
+// => this.total = n + m;
+// => f4.total = undefined + 10;
+// => this.total = NaN;
+
+```
+![image.png](https://cdn.nlark.com/yuque/0/2022/png/29066467/1655173685316-40c3c608-1a31-47b0-85eb-c2c337ef72ad.png#clientId=u08421ad3-767a-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=497&id=ua26eb146&margin=%5Bobject%20Object%5D&name=image.png&originHeight=621&originWidth=1594&originalType=binary&ratio=1&rotation=0&showTitle=false&size=548379&status=done&style=none&taskId=ud96a51f2-3dd3-4d4b-801d-05ab12e4d8c&title=&width=1275.2)<br />![image.png](https://cdn.nlark.com/yuque/0/2022/png/29066467/1655189883600-c5f4f789-dced-45bc-bcd0-43f8d4f90c85.png#clientId=u08421ad3-767a-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=309&id=u3b9b5041&margin=%5Bobject%20Object%5D&name=image.png&originHeight=386&originWidth=989&originalType=binary&ratio=1&rotation=0&showTitle=false&size=222467&status=done&style=none&taskId=u92b8a1d9-c5c4-4423-a240-4a6cf89a568&title=&width=791.2)
+<a name="n6Bkp"></a>
+### 原型及原型链模式
+<a name="J4s9N"></a>
+#### 描述
+> 1. 每一个函数数据类型的值都有一个天生自带的属性：prototype ，这个属性的属性值是一个对象 ( "用来存储实例公用的属性和方法的”) ；
+>    - 普通的函数；
+>    - 类(自定义类和内置类)；
+> 2. 在 prototype 这个对象中，有一个天生自带的属性： constructor，这个属性存储的是当前函数本身；
+> :::info
+Fn.prototype.constructor === Fn 
+:::
+> 3. 每一个对象数据类型的值,也有一个天生自带的属性：__proto__，这个属性指向 "所属类的原型 prototype" ；
+>    - 普通对象、数组、正则、Math、 日期、类数组等等；
+>    - 实例也是对象数据类型的值；
+>    - 函数的原型 prototype 属性的值也是对象类型的；
+>    - 函数也是对象数据类型的值；
+
+```javascript
+/*
+    原型和原型链最基础的模型
+*/
+function Fn() {
+    /*
+    new 执行也会把类当做普通函数执行(当然也有类执行的一面)
+        1.创建一个私有的栈内存;
+        2.形参赋值&变量提升;
+        3.浏览器创建一个对象出来(这个对象就是当前类的一个新实例) , 并且让函数中的 this 指向这个实例对象 => “构造函数模式中，方法中的 this 是当前类的实例”;
+        4.代码执行;
+        5.在我们不设置 return 的情况下，浏览器会把创建的实例对象默认返回;
+    */
+    this.x = 100;
+    this.y = 200;
+    this.say = function () {};
+
+}
+let f1 = new Fn();
+let f2 = new Fn();
+
+console.log(Fn.prototype.constructor === Fn);
+
+```
+![image.png](https://cdn.nlark.com/yuque/0/2022/png/29066467/1655195609231-4663964d-4d61-4ced-8267-40122639f39c.png#clientId=u08421ad3-767a-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=494&id=u57bff808&margin=%5Bobject%20Object%5D&name=image.png&originHeight=617&originWidth=1578&originalType=binary&ratio=1&rotation=0&showTitle=false&size=674361&status=done&style=none&taskId=uc6bf9195-6176-4a3e-aa03-48ec80d73a2&title=&width=1262.4)<br />![image.png](https://cdn.nlark.com/yuque/0/2022/png/29066467/1655196225162-0884c161-3f28-4f1f-9dbe-30adeec636d7.png#clientId=u08421ad3-767a-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=498&id=uc11f72e1&margin=%5Bobject%20Object%5D&name=image.png&originHeight=623&originWidth=1488&originalType=binary&ratio=1&rotation=0&showTitle=false&size=495706&status=done&style=none&taskId=ua3504ebf-9d81-4030-83b2-0d35045964f&title=&width=1190.4)
+<a name="OCKh6"></a>
+#### 原型链查找机制
+> 1.先找自己私有的属性,有则调取使用,没有继续找
+> 2.基于 __proto__ 找所属类原型上的方法( Fn.prototype ) , 如果还没有则继续基于 __proto__ 往上找，直到找到 Object.prototype 为止
+
+<br />
+
+<a name="XiguF"></a>
+### 工厂模式
+
+0<br />1<br />2<br />3<br />4
 <a name="xEzKz"></a>
 # Index，从这里开始
 
