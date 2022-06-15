@@ -2,5 +2,6 @@
     "editor.fontSize": 16,
     "editor.fontLigatures": true,
     "editor.find.cursorMoveOnType": false,
-    "editor.find.loop": false
+    "editor.find.loop": false,
+    "editor.fontFamily": "Hack, 'Courier New', monospace"
 }

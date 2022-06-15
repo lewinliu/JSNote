@@ -2,7 +2,7 @@
  * @Author: LLW
  * @Date: 2022-06-15 09:25:55
  * @LastEditors: LLW
- * @LastEditTime: 2022-06-15 10:42:43
+ * @LastEditTime: 2022-06-15 14:38:21
  * @Description: 请填写简介
  */
 
@@ -43,3 +43,5 @@ Object.prototype.haspubproperty = function (property) {
     */
     return n && !m;
 }
+console.log(Array.prototype.hasPubproperty('push')); // =>FALSE
+console.log([].haspubProperty('push')); // =>TRUE
