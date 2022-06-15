@@ -117,7 +117,4 @@ let f1 = new Fn();
 let f2 = new Fn();
 
 console.log(Fn.prototype.constructor === Fn);
-普通对象、数组、正则、Math、 日期、类数组等等
-实例也是对象数据类型的值
-函数的原型 prototype 属性的值也是对象类型的
-函数也是对象数据类型的值
+
