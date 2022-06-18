@@ -1,8 +1,7 @@
 /*
  * @Author: LLW
  * @Date: 2022-06-15 15:22:56
- * @LastEditors: LLW
- * @LastEditTime: 2022-06-15 16:06:31
+ * @LastEditTime: 2022-06-17 16:38:46
  * @Description: 
  * 
  *  基于内置类的原型扩展方法:
