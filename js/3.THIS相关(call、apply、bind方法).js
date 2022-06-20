@@ -71,19 +71,19 @@ call 方法
     
     如果执行 call 一个实参都没有传递,非严格模式下是让函数中的 this 指向 window,严格模式下指向的是 undefined
 */
-window.name = 'WINDOW';
-let obj = {
-    name: 'OBJ'
-}
-let fn = function (n, m) {
-    console.log(this.name);
-};
-fn(); //=>this:window //=> 'WINDOW'
-fn(10, 20); //=>this:window 严格下是undefined
-fn.call(obj); //=>this:obj n/m=undefined
-fn.call(obj, 10, 20); //=>this:obj n=10 m=20
-fn.call(); //=>this:window 严格下是undefined
-fn.call(null); //=>this:window 严格下是null (第一个参数传递的是null/undefined/不传，非严格模式下thi s指向window,严格模式下传递的是谁this就是谁，不传this是undefined)
+// window.name = 'WINDOW';
+// let obj = {
+//     name: 'OBJ'
+// }
+// let fn = function (n, m) {
+//     console.log(this.name);
+// };
+// fn(); //=>this:window //=> 'WINDOW'
+// fn(10, 20); //=>this:window 严格下是undefined
+// fn.call(obj); //=>this:obj n/m=undefined
+// fn.call(obj, 10, 20); //=>this:obj n=10 m=20
+// fn.call(); //=>this:window 严格下是undefined
+// fn.call(null); //=>this:window 严格下是null (第一个参数传递的是null/undefined/不传，非严格模式下thi s指向window,严格模式下传递的是谁this就是谁，不传this是undefined)
 
 /*
 需求：
@@ -100,8 +100,52 @@ delete obj.fn; // 执行完再删除
 console.log(obj); 
 */
 
-// 方法二：
-fn.call(obj);
+// // 方法二：
+// fn.call(obj);
 
 
 
+/**
+    apply方法:
+        和call方法一样,都是把函数执行,并且改变里面的this关键字的,唯一的区别就是传递给函数的参数方式不同
+            ● call是一个个传参
+            ● apply是按照数组传参
+ */
+
+// let obj = {
+//     name: 'OBJ'
+// };
+// let fn = function (n, m) {
+//     console.log(this.name);
+// }
+// //=>让fn方法执行,让方法中的this变为obj,并且传递 10 & 20;
+// fn.call(obj, 10, 20);
+// fn.apply(obj, [10, 20]);
+
+
+
+
+/*
+    bind方法
+        和call/apply一样,也是用来改变函数中的this关键字的,只不过基于bind改变this ,当前方法并没有被执行,类似于预先改变this
+*/
+let obj = {
+    name: 'OBJ'
+};
+
+function fn() {
+    console.log(this.name);
+}
+document.body.onc1ick = fn; //=> 当事件触发，fn中的this :body
+// => 点击BODY，让FN中的THIS指向OBJ
+// document.body.onclick=IFn. call(obj); 
+// => 基于 call/apply 这样处理，不是把fn绑定给事件，而是把fn执行后的结果绑定给事件
+
+document.body.onclick = function () {
+    //this:BODY
+    fn.call(obj);
+}
+
+document.body.onclick = fn.bind(obj); // => bind的好处是: 通过bind方法只是预先把fn中的this修改为obj,此时fn并没有执行呢，当点击事件触发才会执行fn (call/apply 都是改变this的同时立即把方法执行) 
+// => 在IE6~8中不支持bind方法
+// 预先做啥事情的思想被称为'柯理化函数'
