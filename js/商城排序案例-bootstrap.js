@@ -96,10 +96,10 @@ Ul组件库
     // 1.想要操作谁先获取谁(三个排序按钮)和所有的CARD产品内容
     let navList = document.querySelectorAll('.navbar-nav li'),
         cardList = document.querySelectorAll('.col');
+
+    navList[1]['data-type'] = -1;
     // 2.先实现按照价格的升序排序
     navList[1].onclick = function () {
-        // 动态获取排序状态，判断当前是升序还是降序
-        let dataType = navList[1].getAttribute('data-type');
 
         // 把类数组转换为数组，目的是为了使用SORT进行排序
         cardList = Array.prototype.slice.call(cardList, 0);
@@ -110,15 +110,14 @@ Ul组件库
             next = next.getAttribute('data-price');
 
             // 根据 dataType 来决定是升序还是降序
-            return (!!dataType) ? (cur - next) : (next - cur);
+            return (next - cur) * this['data-type'];
         });
         // 将排序后的结果添加进页面
         cardList.forEach(item => {
             row.appendChild(item);
         });
-        // 排序状态改变,空字符串可以被'!!'直接转换成false
-        // 字符串转换成 boolean,除了空串,其他都是true;
-        navList[1].setAttribute('data-type', (!!dataType) ? "" : "1");
+        // 排序状态改变
+        this['data-type'] *= -1;
     }
 
 }();
