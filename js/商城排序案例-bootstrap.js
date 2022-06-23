@@ -35,7 +35,7 @@ Ul组件库
     xhr.send();
     //把获取的JSON字符串转换为对象
     DATA = JSON.parse(DATA);
-    console.log(DATA);
+
 
     // 2. 把获取的数据展示在页面中
     // 根据获取的DATA: DATA当中有多少项，我就动态创建出多少个CARD盒子(项目中都是基于字符串拼接的方式，把需要创建的CARD拼出来)
@@ -54,9 +54,13 @@ Ul组件库
                 count,
                 good
             },
+            time
         } = item;
 
-        htmlStr += `<div class="col mb-4">
+        htmlStr += `<div class="col mb-4" 
+                        data-price="${price}"  
+                        data-count="${count}"
+                        data-time="${time}">
             <div class="card">
                 <img src="${img}" class="card-img-top" alt="">
                 <div class="card-body">
@@ -64,22 +68,59 @@ Ul组件库
                     <small class="text-muted">
                         <p class="card-text">${content}</p>
                         <p class="card-text nowSells-text">${price}</p>
-                        <p class="card-text"><span class="label-text">${presentExp}</span></p>
+                        <p class="card-text">
+                            <span class="label-text">${presentExp}</span>
+                        </p>
                         <p class="card-text">
                             <span>${count}人评价</span>
                             <span>${good}%好评</span>
                         </p>
+                        <p class="card-text">上架时间：${time}%</p>
                     </small>
                 </div>
             </div>
         </div>`;
     });
 
-    // 将拼接好的页面元素字符串 htmlStr 插入页面当中
+    // 将拼接好的页面元素字符串 htmlStr 插入页面元素 .row 当中
     let row = document.querySelector('.row');
-    console.log(row); 
-
     row.innerHTML = htmlStr;
+
+
+
+    /*
+    第二步:
+        点击价格/热度/.上架时间，可以把内容按照升降序来排列
+    */
+
+    // 1.想要操作谁先获取谁(三个排序按钮)和所有的CARD产品内容
+    let navList = document.querySelectorAll('.navbar-nav li'),
+        cardList = document.querySelectorAll('.col');
+    // 2.先实现按照价格的升序排序
+    navList[1].onclick = function () {
+        // 动态获取排序状态，判断当前是升序还是降序
+        let dataType = navList[1].getAttribute('data-type');
+
+        // 把类数组转换为数组，目的是为了使用SORT进行排序
+        cardList = Array.prototype.slice.call(cardList, 0);
+        // 进行排序(按照每个产品中的价格进行升序)
+        cardList.sort((next, cur) => {
+            // => NEXT/CUR 存储的是每个元素对象(此时我们需要使用每个元素的价格:在数据绑定的时候，我们就把价格等信息绑定给当前元素的某个自定义属性，需要用的时候，直接基于自定义属性的方法获取到即可)
+            cur = cur.getAttribute('data-price');
+            next = next.getAttribute('data-price');
+
+            // 根据 dataType 来决定是升序还是降序
+            return (!!dataType) ? (cur - next) : (next - cur);
+        });
+        // 将排序后的结果添加进页面
+        cardList.forEach(item => {
+            row.appendChild(item);
+        });
+        // 排序状态改变,空字符串可以被'!!'直接转换成false
+        // 字符串转换成 boolean,除了空串,其他都是true;
+        navList[1].setAttribute('data-type', (!!dataType) ? "" : "1");
+    }
+
 }();
 
 // /* 
