@@ -25,15 +25,18 @@
             <a class="navbar-brand" href="javascript:;">商城排序</a>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                    <!-- 给选中的选项加 active -->
-                    <li class="nav-iteha">
+                    <!-- data-sortord 记录的是每个按钮应该按照哪个维度进行排序 -->
+                    <li class="nav-item" data-sortord="data-time">
                         <a class="nav-link" href="javascript:;">上架时间</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item" data-sortord="data-price">
                         <a class="nav-link" href="javascript:;">价格</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item" data-sortord="data-hot">
                         <a class="nav-link" href="javascript:;">热度</a>
+                    </li>
+                    <li class="nav-item" data-sortord="data-good">
+                        <a class="nav-link" href="javascript:;">好评</a>
                     </li>
                 </ul>
             </div>

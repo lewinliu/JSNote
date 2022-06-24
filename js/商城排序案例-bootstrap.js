@@ -59,7 +59,8 @@ Ul组件库
 
         htmlStr += `<div class="col mb-4" 
                         data-price="${price}"  
-                        data-count="${count}"
+                        data-hot="${count}"
+                        data-good="${good}"
                         data-time="${time}">
             <div class="card">
                 <img src="${img}" class="card-img-top" alt="">
@@ -75,7 +76,7 @@ Ul组件库
                             <span>${count}人评价</span>
                             <span>${good}%好评</span>
                         </p>
-                        <p class="card-text">上架时间：${time}%</p>
+                        <p class="card-text">上架时间：${time}</p>
                     </small>
                 </div>
             </div>
@@ -86,8 +87,6 @@ Ul组件库
     let row = document.querySelector('.row');
     row.innerHTML = htmlStr;
 
-
-
     /*
     第二步:
         点击价格/热度/.上架时间，可以把内容按照升降序来排列
@@ -97,12 +96,50 @@ Ul组件库
     let navList = document.querySelectorAll('.navbar-nav li'),
         cardList = document.querySelectorAll('.col');
 
-    navList[1]['data-type'] = -1;
+    // 把类数组转换为数组，目的是为了使用SORT进行排序
+    cardList = [].slice.call(cardList, 0);
+
+    // 循环给所有的按钮绑定点击事件，点击的时候按照指定的规则排序
+    for (let i = 0; i < navList.length; i++) {
+
+        let element = navList[i];
+        // 控制排序的自定义属性
+        element['data-type'] = -1;
+        // 绑定点击事件
+        element.onclick = function () {
+            // 只改变当前项，其余是-1
+            [].forEach.call(navList, item => this === item ? item['data-type'] *= -1 : item['data-type'] = -1);
+
+            // 进行排序
+            cardList.sort((next, cur) => {
+                // 根据点击的的内容进行排序，从自定义属性中获取
+                let sortord = this.getAttribute('data-sortord');
+
+                cur = cur.getAttribute(sortord);
+                next = next.getAttribute(sortord);
+
+                // 时间格式字符串去掉'-'
+                if (sortord === 'data-time') {
+                    //获取的是日期数据:我们要把字符串中的“”给去掉
+                    cur = cur.replace(/-/g, '');
+                    next = next.replace(/-/g, '');
+                }
+
+                // 根据 dataType 来决定是升序还是降序
+                return (next - cur) * this['data-type'];
+            });
+            // 将排序后的结果添加进页面
+            cardList.forEach(item => {
+                row.appendChild(item);
+            });
+        };
+    }
+
+    /* navList[1]['data-type'] = -1;
     // 2.先实现按照价格的升序排序
     navList[1].onclick = function () {
 
-        // 把类数组转换为数组，目的是为了使用SORT进行排序
-        cardList = Array.prototype.slice.call(cardList, 0);
+
         // 进行排序(按照每个产品中的价格进行升序)
         cardList.sort((next, cur) => {
             // => NEXT/CUR 存储的是每个元素对象(此时我们需要使用每个元素的价格:在数据绑定的时候，我们就把价格等信息绑定给当前元素的某个自定义属性，需要用的时候，直接基于自定义属性的方法获取到即可)
@@ -118,7 +155,7 @@ Ul组件库
         });
         // 排序状态改变
         this['data-type'] *= -1;
-    }
+    } */
 
 }();
 
