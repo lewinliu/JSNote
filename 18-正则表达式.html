@@ -12,8 +12,13 @@
 </head>
 
 <body>
+
+    <input type="text" id="inp-txt">
+    <button id="submit">提交</button>
+
+    <script src="js/10.正则表达式.js"></script>
     <script>
-        // ^ $
+   /*      // ^ $
         let reg = /^\d/; // 以数字开头
         console.log(reg.test("liuliangzai")); // false
         console.log(reg.test("2022liuliangzai")); // true
@@ -76,16 +81,9 @@
         console.log(reg.test("0")); //=> true
         console.log(reg.test("2")); //=> true
         console.log(reg.test("10")); //=> false
+ */
 
-
-        /**
-         * 验证是否为有效数字
-         * 规则分析
-         * 1.可能出现+ -号，也可能不出现
-         * 2.一位0-9都可以，多位首位不能是0
-         * 3.小数部分可能有可能没有，一旦有后面必须有小数点+数字
-        */
-        let reg5 = /^[+-]?()$/;
+        
 
     </script>
 </body>
