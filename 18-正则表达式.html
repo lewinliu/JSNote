@@ -1,0 +1,93 @@
+<!--
+ * @Author: LLW
+ * @Date: 2022-06-26 09:38:05
+ * @Description: 请填写简介
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>正则表达式</title>
+</head>
+
+<body>
+    <script>
+        // ^ $
+        let reg = /^\d/; // 以数字开头
+        console.log(reg.test("liuliangzai")); // false
+        console.log(reg.test("2022liuliangzai")); // true
+        console.log(reg.test("liuliangzai2022")); // false
+
+        reg = /\d$/; // 以数字结尾
+        console.log(reg.test("liuliangzai")); // false
+        console.log(reg.test("2022liuliangzai")); // false
+        console.log(reg.test("liuliangzai2022")); // true
+
+        //=> 举个例子:验证手机号码(11位的数字，以1开头)
+        let reg1 = /^1\d{10}$/;
+
+        //=> 以2开头，以三结尾，中间是除换行符以外的字符
+        let reg2 = /^2.3$/;
+        console.log(reg.test("2.3")); // true
+        console.log(reg.test("2@3")); // true
+        console.log(reg.test("23")); // false
+
+        let str = "\\d";
+        reg = /^\d$/; //=> \d代表0-9的数字
+        console.log(reg.test(str)); //=> false
+        reg = /^\\d$/; //=> 把特殊符合转换为普通的
+        console.log(reg.test(str)); //=> true
+
+
+        // 直接x|y会存在很乱的优先级问题，一般我们写的时候都伴随着小括号进行分组，因为小括号改变处理的优先级
+        let reg3 = /^18|29$/;
+        console.log(reg.test("18")); //=>true
+        console.log(reg.test("29")); //=>true
+        console.log(reg.test("129")); //=>true
+        console.log(reg.test("189")); //=>true
+        console.log(reg.test("1829")); //=>true
+        console.log(reg.test("829")); //=>true
+        console.log(reg.test("182")); //=>true
+
+
+        // []
+        // 1.中括号中出现的字符一般都代表本身的含义
+        let reg4 = /^[@+]$/;
+        console.log(reg.test("@")); //=> true
+        console.log(reg.test("+")); //=> true
+        console.log(reg.test("@@")); //=> false
+        console.log(reg.test("@+")); //=> false
+
+        reg = /^[\d]$/; //=> \d在中括号中还是0-9
+        console.log(reg.test("d"));//=> false
+        console.log(reg.test("\\")); //=> false
+        console.log(reg.test("9")); //=> true
+
+        //2.中括号中不存在多位数
+        reg = /^[18]$/;
+        console.log(reg.test("1")); //=> true
+        console.log(reg.test("8")); //=> true
+        console.log(reg.test("18")); //=> false
+
+        reg = /^[10-29]$/; //=> 1或者0-2或者9
+        console.log(reg.test("1")); //=> true
+        console.log(reg.test("9")); //=> true
+        console.log(reg.test("0")); //=> true
+        console.log(reg.test("2")); //=> true
+        console.log(reg.test("10")); //=> false
+
+
+        /**
+         * 验证是否为有效数字
+         * 规则分析
+         * 1.可能出现+ -号，也可能不出现
+         * 2.一位0-9都可以，多位首位不能是0
+         * 3.小数部分可能有可能没有，一旦有后面必须有小数点+数字
+        */
+        let reg5 = /^[+-]?()$/;
+
+    </script>
+</body>
+
+</html>

@@ -3,5 +3,5 @@
     "editor.fontLigatures": true,
     "editor.find.cursorMoveOnType": false,
     "editor.find.loop": false,
-    "editor.fontFamily": "Fira Code, 'Courier New', monospace"
+    "editor.fontFamily": "Fira Code, 幼圆, 'Courier New', monospace"
 }
