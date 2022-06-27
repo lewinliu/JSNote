@@ -67,7 +67,7 @@ function getData(method = 'GET', filePath = 'josn/data.json', async = false) {
     xhr.onreadystatechange = () => (xhr.status === 200 && xhr.readyState === 4) ? DATA = xhr.responseText : null;
     // 发送AJAX请求
     xhr.send();
-    //把获取的JSON字符串转换为对象
+    // 把获取的JSON字符串转换为对象
     DATA = JSON.parse(DATA);
     return DATA;
 }
