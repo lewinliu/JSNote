@@ -304,20 +304,155 @@ g => global     全局匹配
 
 
 
-/*
-    分组捕获
-*/
-//=>身份证号码
-let str = "130828199012040112";
-let reg = /^(\d{6})(\d{4})(\d{2})(\d{2})\d{2}(\d)(\d|X)$/;
-console.log(reg.exec(str));
-console.log(str.match(reg));
-/*
-['130828199012040112', '130828', '1990', '12', '04', '1', '2', index: 0, input: '130828199012040112', groups: undefined]
-*/
-//=> 第一项:大正则匹配的结果
-//=> 其余项:每一个小分组单独匹配捕获的结果
-//=> 如果设置了分组(改变优先级)，但是捕获的时候不需要单独捕获，可以基于?:来处理
+// /*
+//     分组捕获
+// */
+// //=>身份证号码
+// let str = "130828199012040112";
+// let reg = /^(\d{6})(\d{4})(\d{2})(\d{2})\d{2}(\d)(\d|X)$/;
+// console.log(reg.exec(str));
+// console.log(str.match(reg));
+// /*
+// ['130828199012040112', '130828', '1990', '12', '04', '1', '2', index: 0, input: '130828199012040112', groups: undefined]
+// */
+// //=> 第一项:大正则匹配的结果
+// //=> 其余项:每一个小分组单独匹配捕获的结果
+// //=> 如果设置了分组(改变优先级)，但是捕获的时候不需要单独捕获，可以基于?:来处理
 
-reg = /^(\d{6})(\d{4})(\d{2})(\d{2})\d{2}(\d)(?:\d|X)$/;
+// reg = /^(\d{6})(\d{4})(\d{2})(\d{2})\d{2}(\d)(?:\d|X)$/;
 
+
+
+
+// // //=>既要捕获到{数字}，也想单独的把数字也获取到，例如:第一次找到{0}还需要单独获取0
+// // let str = "{0}年{1}月{2}日";
+// // //=>不设置g只匹配一次，exec和match获取的结果一致(既有大正则匹配的信息，也有小分组匹配的信息)
+// // let reg = /\{(\d+)\}/;
+// // console.log(reg.exec(str));
+// // console.log(str.match(reg));
+// // // ["{0}", "0"....]
+
+// let reg = /\{(\d+)\}/g;
+// //console.log(str. match(reg)); //=>["{0}"， "{1}", "{2}"]多次匹配的情况下, match只能把大正则匹配的内容获取到，小分组匹配的信息无法获取
+// let aryBig = [],
+//     arySmall = [],
+//     res = reg.exec(str);
+
+// while (res) {
+//     let [big, small] = res;
+//     aryBig.push(big);
+//     arySmall.push(small);
+//     res = reg.exec(str);
+// }
+// console.log(aryBig, arySmall);
+// // ["{0}", "{1}", "{2}"]
+// // ["0", "1", "2"]
+
+
+
+// //=>分组的第三个作用:“分组引用”
+// let str = "book"; //=>"good"、 "look"、 "moon"、 "foot". . .
+// let reg2 = /^[a-ZA-z]([a-ZA-z])\1[a-ZA-z]$/; 
+// //=>分组引用就是通过“\数字”让其代表和对应分组出现一模一样的内容
+// console.log(reg2.test("book")); //=>true
+// console.log(reg2.test("deep")); //=>true
+// console.log(reg2.test("some")); //=>false
+
+
+
+
+// let str = "啊啊2022@2023噢噢";
+// //=>正则捕获的贪婪性:默认情况下，正则捕获的时候，是按照当前正则所匹配的最长结果来获取的
+// let reg = /\d+/g;
+// console.log(str.match(reg)); //=> ["2022","2023"]
+
+// //=>在量词元字符后面设置?,取消捕获时候的贪婪性(按照正则匹配的最短结果来获取)
+// reg = /\d+?/g;
+// console.log(str. match(reg)); //=> ["2"， "0"，"2"，"2","2"，"0"，"2"，"3"]
+
+
+
+/*
+// 问号在正则中的五大作用
+    问号左边是非量词元字符:本身代表量词元字符,出现零到一次
+    问号左边是量词元字符:取消捕获时候的贪婪性
+    (?:)只匹配不捕获
+    (?=)正向预查
+    (?!)负向预查
+*/
+
+
+
+
+// let str = "{0}年{1}月{2}日";
+// let reg = /\{(\d+)\}/g;
+// console.log(reg.test(str)); //=>true
+// console.log(RegExp.$1); //=>"0"
+// console.log(reg.test(str)); //=>true
+// console.log(RegExp.$1); //=>"1"
+// console.log(reg.test(str)); //=>true
+// console.log(RegExp.$1); //=>"2" I
+// console.log(reg.test(str)); //=>false
+// console.log(RegExp.$1); //=>"2", 存储的是上次捕获的结果
+
+// //=> RegExp.$1~RegExp.$9: 获取当前本次正则匹配后，第一个到第九个分组的信息
+
+
+// /**
+//  * replace
+//  */
+// let str = "liangzai@1234|liangzai@1234";
+// //=> 把"1234"替换成"123456"
+
+// // 1.不用正则
+// str = str.replace("1234","123456").replace("1234","123456");
+// console.log(str);
+// // 结果:"liangzai@12345656|liangzai@1234";
+
+// // 2.使用正则
+// let str2 = "liangzai@1234|liangzai@1234";
+// str2 = str2.replace(/1234/g,"123456");
+// console.log(str2);
+// // liangzai@123456|liangzai@123456
+
+
+// // 案例:把时间字符串进行处理
+// let time = "2019-08-13";
+// //=>变为"2019年08月13日"
+// let reg = /^(\d{4})-(\d{1,2})-(\d{1,2})$/;
+
+// // //=>这样可以实现
+// // time = time.replace(reg, "$1年$2月$3日");
+// // console.log(time); //=>2019年08月13日
+
+// //=>还可以这样处理[str]. replace([reg] , [function])
+// // 1.首先拿REG和TIME进行匹配捕获，能匹配到几次就会把传递的函数执行几次(而且是匹配一次就执行一次)
+// // 2.不仅把方法执行，而且REPLACE还给方法传递了实参信息(和exec捕获的内容一致的信息: 大正则匹配的内容，小分组匹配的信息....)
+// // 3.在函数中我们返回的是啥，就把当前大正则匹配的内容替换成啥
+// /*
+// time = time.replace(reg, (big, $1, $2, $3) => {
+//     //=>这里的$1~$3是我们自己设置的变量
+//     console.log(big, $1, $2, $3);
+// });
+// */
+// time = time.replace(reg, (...arg) => {
+//     let [, $1, $2, $3] = arg;
+//     $2.length < 2 ? $2 = "0" + $2 : null;
+//     $3.length < 2 ? $3 = "0" + $3 : null;
+//     return $1 + "年" + $2 + "月" + $3 + "日";
+// });
+// console.log(time);
+
+// // 单词首字母大写
+// let str = "good good study, day day up! ";
+// let reg = /\b([a-ZA-z])[a-ZA-z]*\b/g;
+// //=> 函数被执行了六次，每一次都把正则匹配信息传递给函数
+// //=> 每一次ARG:["good","g"] ["good","g"] ["study","s"]...
+// str = str.replace(reg, (...arg) => {
+//     let [content, $1] = arg;
+//     $1 = $1.toUpperCase();
+//     content = content.substring(1);
+//     return $l + content;
+//     I
+// });
+// console.log(str); //=>"Good Good Study, Day Day Up!

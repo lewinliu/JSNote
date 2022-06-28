@@ -90,8 +90,7 @@ function getAge(strBirthday) {
                 else {
                     returnAge = ageDiff;
                 }
-            }
-            else {
+            } else {
                 var monthDiff = nowMonth - birthMonth;//月之差
                 if (monthDiff < 0) {
                     returnAge = ageDiff - 1;
@@ -100,8 +99,7 @@ function getAge(strBirthday) {
                     returnAge = ageDiff;
                 }
             }
-        }
-        else {
+        } else {
             returnAge = -1;//返回-1 表示出生日期输入错误 晚于今天
         }
     }
@@ -123,9 +121,8 @@ let inpTxt = document.querySelector('.inp_content');
 
 btnQuery.onclick = function () {
     let data = getData();
-    console.log(data);
-    let inp = inpTxt.value; // "130828199012040617"
-    let ary = verifyID(inp);
+    let ary = verifyID(inpTxt.value); // "130828199012040617"
+    
     idInfo.address = data[ary[0]];
     idInfo.sex = ary[4] % 2 ? '男' : '女';
     idInfo.birthday = ary[1] + "年" + ary[2] + "月" + ary[3] + "日";
