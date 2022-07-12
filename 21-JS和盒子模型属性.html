@@ -1,0 +1,107 @@
+<!--
+ * @Author: LLW
+ * @Date: 2022-06-30 09:38:41
+ * @Description: JS和盒子模型属性
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>JS和盒子模型属性</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        /* FLEX:http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html?utm%20source=%20tuicool*/
+        /* 设置元素在FLEX容器主轴和交叉轴方向上的对齐方式: center居中对齐 */
+        body {
+            height: 10000px;
+            /* CSS3中的背景颜色线性渐变*/
+            background: -webkit-linear-gradient(left bottom, lightpink, yellow, lightyellow);
+            /* 弹性布局 */
+            display: -webkit-flex;
+            display: flex;
+            /* 主轴上的对齐方式：居中 */
+            justify-content: center;
+            /* 交叉轴上的对齐方式：居中 */
+            align-items: center;
+        }
+
+        .box {
+            /* 盒子的最终宽高属性：300*300 */
+            box-sizing: border-box;
+            padding: 10px;
+            width: 300px;
+            height: 300px;
+            border: 10px solid lightgrey;
+            background-color: lightblue;
+            font-size: 16px;
+            line-height: 35px;
+        }
+
+        /*box水平垂直居中*/
+        /*基于CSS3变形属性中的位移，在不知道宽高的情况下也能实现效果*/
+        /* .box {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        } */
+
+        /* .box {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            margin: auto;
+        } */
+
+        .link {
+            position: fixed;
+            right: 30px;
+            bottom: 230px;
+            box-sizing: border-box;
+            width: 100px;
+            height: 100px;
+            background: lightcoral;
+            font-size: 16px;
+            color: #000;
+            text-decoration: none;
+            text-align: center;
+            line-height: 100px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        夫君子之行，静以修身，俭以养德,非淡泊无以明志,非宁静无以致远。夫学须静也，才须学也，非学无以广才，非志无以成学。淫漫则不能励精，险躁则不能冶性,年与时驰，意与日去，遂成枯落,多不接世，悲守穷庐，将复何及~~
+    </div>
+
+    <a href="javascript:;" id="link" class="link">回到顶部</a>
+
+
+    <!-- <script src="js/15.JS中的DOM操作(盒子模型属性).js"></script> -->
+    <script>
+        let html = document.documentElement,
+            link = document.getElementById('link');
+        // 1. 当浏览器滚动条滚动的时候，我们进行验证:卷去的高度超过一屏，我们让#LINK显示
+        function check() {
+            // console.log(html.clientHeight + ',' + html.scrollHeight + ',' + html.scrollTop);
+            link.style.display = html.scrollTop > html.clientHeight ? 'block' : 'none';
+        }
+        window.onscroll = check;
+
+        link.onclick = function () {
+            html.scrollTop = 0;
+        }
+
+    </script>
+</body>
+
+</html>
