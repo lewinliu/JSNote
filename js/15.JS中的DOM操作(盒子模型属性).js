@@ -124,7 +124,7 @@ document.documentElement.scrollHeight || document.body.scrollHeight
  */
 
 
-let box = document.getElmentById('box');
+/* let box = document.getElmentById('box');
 //=> 竖向滚动条卷去的高度
 //=> 横向滚动条卷去的宽度
 // 1.边界值
@@ -136,3 +136,37 @@ box.scrollLeft
 
 //=>13个盒子模型属性，只有这两个是“可读写”的属性(既可以获取也可以设置对应的值)，其余的都是“只读”属性(不能设置值，只能获取)
 box.scrollTop = 0;
+ */
+
+/* 
+//=> offsetParent:获取它的父参照物(不一定是父元素)
+//=> offsetTop:距离其父参照物的上偏移
+//=> offsetLeft:距离其父参照物的左偏移(当前元素的外边框到父参照物的里边框)
+
+function offset(ele) {
+    let par = ele.offsetParent,
+        l = ele.offsetLeft,
+        t = ele.offsetTop;
+    // 存在父参照物，而且还没有找到BODY
+    while (par && par.tagName !== "BODY") {
+        //在原有偏移的基础上累加:父参照物的边框、父参照物的偏移
+        if (!/MSIE 8\.0/.test(navigator.userAgent)) {
+            //IE8中偏移值自己就算了边框了，不需要我们在加边框的值navigator.userAgent获取当前浏览器的版本信息
+            l += par.clientLeft;
+            t += par.clientTop;
+
+        }
+        l += par.offsetLeft;
+        t += par.offsetTop;
+        //继续获取.上级参照物
+        par = par.offsetParent;
+        return { parent: par, left: l, top: t };
+    }
+}
+let box = document.getElementById('box');
+console.log(typeof offset(box)); */
+
+
+
+
+
