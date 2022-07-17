@@ -1,0 +1,50 @@
+<!--
+ * @Author: LLW
+ * @Date: 2022-07-17 14:34:26
+ * @Description: 图片延迟加载
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>图片延迟加载</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        img {
+            border: none;
+        }
+
+        img[src=""] {
+            display: none;
+        }
+
+        .imgBox {
+            box-sizing: border-box;
+            margin: 800px auto;
+            width: 300px;
+            height: 200px;
+            background: #333;
+        }
+
+        .imgBox img {
+            width: 100%;
+            height: 100%;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="imgBox">
+        <img src="" alt="" trueImg="src/鸡你太美/cxk1.jpg">
+    </div>
+
+    <script src="js/16.延迟加载.js"></script>
+</body>
+
+</html>
