@@ -7,33 +7,32 @@ ul {
     list-style: none;
 }
 
-#tabBox {
+.tabBox {
     box-sizing: border-box;
     margin: 20px auto;
     margin-top: 21px;
     width: 500px;
     /* background-color: aquamarine; */
-
 }
 
-#navBox {
+.navBox {
     /* 只要把容器设置为 flex 弹性盒子容器，那么容器中的子元素默认在容器主轴(X轴)水平靠左排列 */
     display: flex;
     position: relative;
     top: 1px;
     z-index: 1;
-    
 }
 
-#navBox li {
+.navBox>li {
     box-sizing: border-box;
     padding: 0 10px;
     line-height: 35px;
     border: 1px solid #999;
     margin-right: 10px;
+    
 }
 
-#tabBox>div {
+.tabBox>div {
     box-sizing: border-box;
     padding: 10px;
     height: 150px;
@@ -41,10 +40,10 @@ ul {
     display: none;
 }
 
-#navBox>li.active {
-    border-bottom-color: white;
+.navBox>li.active {
+    border-bottom:2px solid white;
 }
 
-#tabBox>div.active {
+.tabBox>div.active {
     display: block;
 }

@@ -1,8 +1,8 @@
 <!--
  * @Author: LLW
  * @Date: 2022-05-25 22:19:05
- * @LastEditors: LLW
- * @LastEditTime: 2022-06-11 14:34:11
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2022-07-19 15:30:52
  * @Description: 请填写简介
 -->
 <!DOCTYPE html>
@@ -16,8 +16,8 @@
 </head>
 
 <body>
-    <div id="tabBox">
-        <ul id="navBox">
+    <div class="tabBox">
+        <ul class="navBox">
             <li class="active">编程</li>
             <li>读书</li>
             <li>运动</li>
@@ -30,8 +30,8 @@
     <!-- <script src="js/tab.js"></script> -->
 
     <script>
-        var tabBox = document.getElementById("tabBox");
-        var navBox = document.getElementById("navBox");
+        var tabBox = document.getElementsByClassName("tabBox")[0];
+        var navBox = document.getElementsByClassName("navBox")[0];
         var tabList = tabBox.getElementsByTagName('div');
         var navList = navBox.getElementsByTagName('li');
 
@@ -77,12 +77,10 @@
 
         /* 基于es6中的let解决 */
         for (let i = 0; i < navList.length; i++) {
-            navList[i].onclick = function () {
-                changeTab(this.mIndex);
-            }
+            navList[i].onclick = () => changeTab(i);
         }
 
-        
+
 
 
 
