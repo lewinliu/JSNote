@@ -78,7 +78,7 @@ $inp.val('AAA') // 设置表单元素内容
 
 //=> 3.操作自定义属性
 $box.attr('data-type'); //=> 获取自定义属性值
-$box.attr('data-type', 'B'); //=> 设置自定义属性值
+$box.attr('data-type', '属性值'); //=> 设置自定义属性值
 $box.attr({
     'type': 1,
     'name': '靓仔'
@@ -122,3 +122,49 @@ $box.outerHeight();
 //=> 等价于 clientWidth/Height 和 offsetWidth/Height
 
 $(document).scrollTop([val]); //=>可以获取或者设置scrollTop的信息，对应的方法. scrollLeft
+
+
+// 除了操作DOM , JQ中还提供了其它有助于项目开发的方法
+//=>事件处理.
+//$元素.on([event type],[function])
+//$元素.off([event type],[function])
+//$元素.bind() $元素.unbind() $元素.delegate()
+//$元素.click()
+$box.on('click', function () { }); I
+$box.click(function () { });
+
+//=>动画处理
+// .animate([目标样式],[总时间],[运动方式],[运动完做的事情])
+// .stop / .finish
+$box.animate({
+    top: 100,
+    left: 200
+}, 1000, 'linear', function () { });
+
+//=>AJAX请求处理
+let _DATA = null;
+$.ajax({
+    url: '',
+    method: 'GET',
+    async: false,
+    dataType: 'json',
+    success: result => {
+        //result:当请求成功执行success函数，result就是从服务器获取的结果
+        _DATA = result;
+    }
+});
+
+//=>常用的工具方法
+/* 
+$.each([数组/类数组/对象],function(index, item) {
+    //=>遍历数组中的每一项index:索引 item: 当前循环这一项(对象: index是属性名item属性值 )
+}); 
+*/
+$('A').each(function (index, item) { });
+/*
+$.toArray()     转换为数组
+$.merge()       数组合并
+$.makeArray()   把类数组转换为数组
+$.uniqueSort()  去重加排序
+$.type()        数据类型检测
+*/
