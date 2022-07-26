@@ -119,12 +119,32 @@ let shopModules = (function ($) {
         });
     }
 
+    //=>返回顶部
+    function gotoTop() {
+
+        let $gotoTop = $('.goto-top'),
+            $window = $(window);
+
+        $gotoTop.on('click', function () {
+            $('html').animate({ scrollTop: '0px' }, "slow", 'linear');
+        });
+
+        $window.on('scroll', function () {
+            if ($window.scrollTop() > $window.height()) {
+                $gotoTop.css('display', 'block').fadeIn(1000);
+            } else {
+                $gotoTop.css('display', 'none').fadeOut(1000);
+            }
+        });
+    };
+
     return {
         //=>当前模块的入口:想让商城排序开始执行，我们只需要执行init，在init中 会按照顺序，依次完成具体的业务逻辑
         init() {//=>init:function(){}
             queryData();
             bindHtml();
             sortHandle();
+            gotoTop();
         }
     }
 })(jQuery);
