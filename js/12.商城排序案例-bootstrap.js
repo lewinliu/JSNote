@@ -18,7 +18,7 @@ Ul组件库
      * 去除字符串中非数字并返回；
      */
     function myDelNaN() {
-        return (this + '').replace(/[^\d]/g, '');;
+        return (this + '').replace(/[^\d]/g, '');
     }
 
     // 添加到字符串原型中
@@ -55,7 +55,7 @@ Ul组件库
 /**
  * 请求数据并返回；
  */
-function getData(method = 'GET', filePath = 'josn/data.json', async = false) {
+function getData(method = 'GET', filePath = '/josn/data.json', async = false) {
 
     // 创建AJAX的实例
     let DATA = null,

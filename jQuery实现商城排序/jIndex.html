@@ -1,0 +1,65 @@
+<!--
+ * @Author: LLW
+ * @Date: 2022-07-25 16:03:18
+ * @Description: 请填写简介
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>基于jQuery实现商城排序</title>
+    <!-- import css -->
+    <link rel="stylesheet" href="/css/reset.min.css">
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/17-商城排序案例.css">
+
+</head>
+<body>
+
+    <!-- Bootstrap 中建议所有内容都存放在 container 容器中 -->
+    <div class="container">
+        <!-- NAV导航 -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="javascript:;">商城排序</a>
+                <div class="collapse navbar-collapse">
+                    <div class="navbar-nav">
+                        <a data-sortord="data-time" class="nav-link" href="javascript:;">上架时间</a>
+                        <a data-sortord="data-price" class="nav-link" href="javascript:;">价格</a>
+                        <a data-sortord="data-hot" class="nav-link" href="javascript:;">热度</a>
+                        <a data-sortord="data-good" class="nav-link" href="javascript:;">好评</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <!-- Card-List 商品列表 -->
+        <div class="row row-cols-1 row-cols-md-4">
+            <!-- 卡片样本
+            <div class="col mb-4">
+                <div class="card">
+                    <img src="src/img/0.png" class="card-img-top" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title">【新品上市】华为畅享 50</h5>
+                        <small class="text-muted">
+                            <p class="card-text">6000mAh大电池</p>
+                            <p class="card-text nowSells-text">￥1499</p>
+                            <p class="card-text"><span class="label-text">赠送积分</span></p>
+                            <p class="card-text">
+                                <span>16888人评价</span>
+                                <span>98.5%好评</span>
+                            </p>
+                            <p class="card-text">上架时间：2022-6-23</p>
+                        </small>
+                    </div>
+                </div>
+            </div> -->
+
+        </div>
+
+    </div>
+    
+    <!-- import JS -->
+    <script src="/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="jIndex.js"></script>
+</body>
+</html>
