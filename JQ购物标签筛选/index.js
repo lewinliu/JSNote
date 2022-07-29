@@ -36,14 +36,62 @@ let cartModule = (function ($) {
         _DATA.forEach(item => {
             let { type, text, content } = item;
             str +=
-                `<li data-type="${type}">
-                ${text}:
+                `<li _type="${type}">
+                ${text}：
                 ${content.map(A => {
                     return `<a href="javascript:;">${A}</a>`;
-                })}
+                }).join('&nbsp;&nbsp;&nbsp;')}
                 </1i>`;
         });
         $typeBox.html(str);
+
+        //=>选择区(绑定之前先根据TYPE排序)
+        str = `你的选择：`;
+        _SELECT.sort((A, B) => A.type - B.type);
+        _SELECT.forEach(item => {
+            str += `<mark>${item.name} <a _type='${item.type}'}' href="javascript:;">X</a></mark>` + '&nbsp;&nbsp;&nbsp;';
+        });
+        $chooseBox.html(str);
+
+        // 渲染完成，绑定点击事件
+        handle();
+        handleSelect();
+    }
+
+    //=>待选区绑定点击事件
+    function handle() {
+        $typeBox.find('a').on('click', function () {
+            let $this = $(this),
+                obj = {};
+            // 需要存储的内容
+            obj.type = parseFloat($this.parent().attr('_type'));
+            obj.name = $this.text().trim();
+            // 存储到 _SELECT 中
+            _SELECT.forEach((item, index) => {
+                if (item.type === obj.type) {
+                    _SELECT.splice(index, 1);
+                }
+            });
+            _SELECT.push(obj);
+
+            //=>重新渲染
+            render();
+        });
+    }
+
+    //=>已选区绑定点击事件
+    function handleSelect() {
+        $chooseBox.find('a').on('click', function () {
+            let $this = $(this),
+                _type = parseFloat($this.attr('_type'));
+            _SELECT.forEach((item, index) => {
+                if (item.type === _type) {
+                    _SELECT.splice(index, 1);
+                }
+            });
+            //=>重新渲染
+            render();
+        });
     }
 
     return {
@@ -51,7 +99,6 @@ let cartModule = (function ($) {
             render();
         }
     }
-
 })(jQuery);
 
 cartModule.init();
